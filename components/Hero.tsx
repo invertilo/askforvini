@@ -9,30 +9,14 @@ import { LetterCascade } from "@/components/ui/letter-cascade";
 import { FlippingWordSwap } from "@/components/motion/FlippingWordSwap";
 import { VelocityScroll } from "@/components/motion/VelocityScroll";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
+import { useTheme } from "@/components/motion/useTheme";
 import { MERCAV_HREF } from "@/lib/links";
 import type { Messages } from "@/lib/messages";
-import { useSyncExternalStore } from "react";
 
 type HeroProps = {
   locale: string;
   copy: Messages["hero"];
 };
-
-function useTheme(): "light" | "dark" {
-  return useSyncExternalStore(
-    (onChange) => {
-      const observer = new MutationObserver(onChange);
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["data-theme"],
-      });
-      return () => observer.disconnect();
-    },
-    () =>
-      document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark",
-    () => "dark",
-  );
-}
 
 export function Hero({ locale, copy }: HeroProps) {
   const reduce = useReducedMotion();

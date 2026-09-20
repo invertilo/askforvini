@@ -1,8 +1,9 @@
 "use client";
 
+import { useIsClient } from "@/components/motion/useIsClient";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
 import { motion } from "motion/react";
-import { useSyncExternalStore, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type KineticTextProps = {
   children: ReactNode;
@@ -18,17 +19,9 @@ const motionTags = {
   div: motion.div,
 } as const;
 
-function useClientReady() {
-  return useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-}
-
 export function KineticText({ children, className, as = "div" }: KineticTextProps) {
   const reduce = useReducedMotion();
-  const ready = useClientReady();
+  const ready = useIsClient();
 
   if (reduce || !ready) {
     const Static = as;

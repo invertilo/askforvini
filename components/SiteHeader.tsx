@@ -3,9 +3,10 @@
 import { InPageAnchor } from "@/components/InPageAnchor";
 import type { Locale } from "@/lib/i18n";
 import type { Messages } from "@/lib/messages";
+import { useIsClient } from "@/components/motion/useIsClient";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -21,16 +22,8 @@ const SECTION_IDS = [
   "connect",
 ] as const;
 
-function useClientReady() {
-  return useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-}
-
 export function SiteHeader({ locale, nav }: SiteHeaderProps) {
-  const ready = useClientReady();
+  const ready = useIsClient();
   const pathname = usePathname() ?? "";
   const onFaq = pathname === `/${locale}/faq` || pathname.endsWith("/faq");
   const [stuck, setStuck] = useState(false);

@@ -18,7 +18,7 @@ type FaqShellProps = {
 function InertWhenGated({ children }: { children: ReactNode }) {
   const { open } = useShabbat();
   return (
-    <div inert={open || undefined} aria-hidden={open || undefined}>
+    <div {...(open ? { inert: true, "aria-hidden": true } : {})}>
       {children}
     </div>
   );

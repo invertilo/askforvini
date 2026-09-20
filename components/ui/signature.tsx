@@ -92,9 +92,9 @@ export function Signature({
         if (cancelled) return;
         setPaths(newPaths);
         setWidth(x + horizontalPadding);
-      } catch (error) {
-        console.error("Signature component font load error:", error);
+      } catch {
         if (cancelled) return;
+        // Keep fallback text; avoid noisy console.error in Next.js Dev Tools.
         setPaths([]);
         setWidth(text.length * fontSize * 0.6);
       }

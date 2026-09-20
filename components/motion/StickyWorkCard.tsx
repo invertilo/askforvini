@@ -1,8 +1,9 @@
 "use client";
 
+import { useIsClient } from "@/components/motion/useIsClient";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef, useSyncExternalStore, type ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 
 type StickyWorkCardProps = {
   children: ReactNode;
@@ -10,17 +11,9 @@ type StickyWorkCardProps = {
   className?: string;
 };
 
-function useClientReady() {
-  return useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-}
-
 export function StickyWorkCard({ children, index, className }: StickyWorkCardProps) {
   const reduce = useReducedMotion();
-  const ready = useClientReady();
+  const ready = useIsClient();
   const ref = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,

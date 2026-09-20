@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsClient } from "@/components/motion/useIsClient";
 import { isShabbatWindow, resolveShabbatOverride, SHABBAT_CONTINUE_KEY } from "@/lib/shabbat";
 import {
   createContext,
@@ -44,10 +45,6 @@ function subscribeContinue(onStoreChange: () => void) {
   return () => window.removeEventListener(CONTINUE_EVENT, onStoreChange);
 }
 
-function subscribeMount() {
-  return () => undefined;
-}
-
 function readContinued() {
   return sessionStorage.getItem(SHABBAT_CONTINUE_KEY) === "1";
 }
@@ -55,7 +52,7 @@ function readContinued() {
 function ShabbatProviderInner({ children }: { children: ReactNode }) {
   const searchParams = useSearchParams();
   const override = resolveShabbatOverride(searchParams.toString());
-  const mounted = useSyncExternalStore(subscribeMount, () => true, () => false);
+  const mounted = useIsClient();
   const inWindow = useSyncExternalStore(
     subscribeClock,
     () => isShabbatWindow(),
