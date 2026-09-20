@@ -1,0 +1,13 @@
+---
+description: In-page anchors must use smooth scroll via InPageAnchor
+alwaysApply: true
+---
+
+# Smooth scroll interactions
+
+Any same-page navigation to a hash (`#section`, `/{locale}#section`, skip link to `#main`) must use [`components/InPageAnchor.tsx`](components/InPageAnchor.tsx) (or call [`lib/smooth-scroll.ts`](lib/smooth-scroll.ts) `scrollToHash`).
+
+- Do not rely on raw browser jump for in-page CTAs or primary nav section links.
+- Respect `prefers-reduced-motion`: use `behavior: "auto"` when reduced motion is on.
+- Keep `scroll-margin-top` on section ids so sticky header does not cover targets.
+- External links (Mercav, GitHub, mailto, etc.) stay normal anchors — do not wrap them in `InPageAnchor` unless they also carry a same-page hash.

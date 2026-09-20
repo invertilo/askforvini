@@ -1,8 +1,10 @@
 "use client";
 
+import { InPageAnchor } from "@/components/InPageAnchor";
 import type { Locale } from "@/lib/i18n";
 import type { Messages } from "@/lib/messages";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 
 type SiteHeaderProps = {
@@ -10,7 +12,14 @@ type SiteHeaderProps = {
   nav: Messages["nav"];
 };
 
-const SECTION_IDS = ["top", "about", "pillars", "work", "connect"] as const;
+const SECTION_IDS = [
+  "top",
+  "about",
+  "pillars",
+  "work",
+  "security",
+  "connect",
+] as const;
 
 function useClientReady() {
   return useSyncExternalStore(
@@ -22,6 +31,8 @@ function useClientReady() {
 
 export function SiteHeader({ locale, nav }: SiteHeaderProps) {
   const ready = useClientReady();
+  const pathname = usePathname() ?? "";
+  const onFaq = pathname === `/${locale}/faq` || pathname.endsWith("/faq");
   const [stuck, setStuck] = useState(false);
   const [active, setActive] = useState<string>("top");
 
@@ -33,6 +44,8 @@ export function SiteHeader({ locale, nav }: SiteHeaderProps) {
   }, []);
 
   useEffect(() => {
+    if (onFaq) return;
+
     const nodes = SECTION_IDS.map((id) => document.getElementById(id)).filter(
       (el): el is HTMLElement => Boolean(el),
     );
@@ -51,37 +64,48 @@ export function SiteHeader({ locale, nav }: SiteHeaderProps) {
 
     for (const node of nodes) observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [onFaq]);
 
   const items = [
     { id: "top", href: `/${locale}#top`, label: nav.home },
     { id: "about", href: `/${locale}#about`, label: nav.about },
     { id: "pillars", href: `/${locale}#pillars`, label: nav.pillars },
     { id: "work", href: `/${locale}#work`, label: nav.work },
+    { id: "security", href: `/${locale}#security`, label: nav.security },
     { id: "connect", href: `/${locale}#connect`, label: nav.connect },
   ];
+
+  const linkClass = (isCurrent: boolean) =>
+    `nav-hit rounded-full text-[0.9375rem] ${
+      isCurrent
+        ? "text-content"
+        : "text-content-secondary hover:text-content"
+    }`;
 
   return (
     <header className={`site-header${ready && stuck ? " is-stuck" : ""}`}>
       <div className="page-wrap flex items-center py-3">
         <nav aria-label="Primary" className="flex flex-wrap items-center gap-1">
           {items.map((item) => {
-            const isCurrent = ready && active === item.id;
+            const isCurrent = ready && !onFaq && active === item.id;
             return (
-              <Link
+              <InPageAnchor
                 key={item.href}
                 href={item.href}
-                className={`nav-hit rounded-full text-[0.9375rem] ${
-                  isCurrent
-                    ? "text-content"
-                    : "text-content-secondary hover:text-content"
-                }`}
+                className={linkClass(isCurrent)}
                 aria-current={isCurrent ? "true" : undefined}
               >
                 {item.label}
-              </Link>
+              </InPageAnchor>
             );
           })}
+          <Link
+            href={`/${locale}/faq`}
+            className={linkClass(ready && onFaq)}
+            aria-current={ready && onFaq ? "true" : undefined}
+          >
+            {nav.faq}
+          </Link>
         </nav>
       </div>
     </header>

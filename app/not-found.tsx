@@ -1,5 +1,5 @@
 import { NotFoundView } from "@/components/NotFoundView";
 
-export default function NotFound() {
+export default function RootNotFound() {
   return <NotFoundView />;
 }

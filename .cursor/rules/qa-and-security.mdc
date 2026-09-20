@@ -1,0 +1,28 @@
+---
+description: Full QA and defensive security review after every change
+alwaysApply: true
+---
+
+# QA and security on every change
+
+After **any** change — including one-line copy or CSS — do not stop until this pass is done.
+
+## QA
+
+1. Check for broken syntax, types, imports, and logic in touched files (and callers).
+2. Run lint / typecheck on the affected surface when tooling is available.
+3. If UI or copy changed: verify ES and EN, light and dark contrast, and that links/routes resolve.
+4. If navigation or anchors changed: verify smooth in-page scroll and reduced-motion fallback.
+5. Fix regressions before considering the task complete.
+
+## Defensive security
+
+1. Never commit secrets, tokens, or credentials. Do not log them client-side.
+2. Do not introduce XSS (no unsanitized `dangerouslySetInnerHTML` from user/untrusted input; theme boot scripts stay static/trusted only).
+3. Do not weaken auth, CSRF, headers, or proxy/middleware controls.
+4. Public portfolio copy must stay defensive: no exploit recipes, payloads, or step-by-step attack playbooks.
+5. When the diff touches routes, forms, headers, `proxy`/middleware, auth, or data handling, run a security review (project security-review skill / subagent) before closing.
+
+## Out of scope for public pages
+
+Offensive catalogs, cheat sheets, and PoC dumps do not belong on askforvini.pw.

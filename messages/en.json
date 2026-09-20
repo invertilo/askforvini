@@ -9,7 +9,9 @@
     "about": "About",
     "pillars": "Pillars",
     "work": "Work",
-    "connect": "Connect"
+    "security": "Security",
+    "connect": "Connect",
+    "faq": "FAQ"
   },
   "hero": {
     "brand": "askforvini",
@@ -119,17 +121,235 @@
       }
     ]
   },
+  "security": {
+    "title": "Audit and incident response",
+    "lede": "When an attack already happened — or when you need to show how entry would have worked — I reconstruct the path: vector, observed methods, endpoints touched, data at risk, and what to close. An actionable report, not an exploitation playbook.",
+    "phasesLabel": "How I work",
+    "phases": [
+      {
+        "title": "Containment and evidence",
+        "body": "Isolate the active surface, preserve logs, tokens, and artifacts without trampling the scene. Stop the bleeding first; explain second."
+      },
+      {
+        "title": "Timeline and entry vector",
+        "body": "Order what happened and when: abused credential, stolen session, IDOR, poorly scoped flow. The “how they got in” has to be defensible."
+      },
+      {
+        "title": "Surface: endpoints and auth",
+        "body": "Map authn/authz, poorly scoped objects, flow abuse, and trust chains. Which endpoint returned what, under which identity."
+      },
+      {
+        "title": "Impact and risk range",
+        "body": "Classify exposed data (PII, tokens, records, secrets) and severity from low to critical, with a clear rationale for business and engineering."
+      },
+      {
+        "title": "Close and report",
+        "body": "Revoke, rotate, patch controls, add alerts, and deliver a report that states what happened, what was or could be stolen, and what still needs hardening."
+      }
+    ],
+    "case": {
+      "eyebrow": "Illustrative case (anonymous)",
+      "title": "API with poorly scoped object access",
+      "summary": "Reconstruction of a typical REST API incident: an actor abused a predictable identifier and an export endpoint with incomplete authz. Not a real client; this is the report format I deliver.",
+      "vectorLabel": "Entry vector",
+      "vector": "Valid support-role session plus access to other tenants’ resources via IDOR on resource identifiers.",
+      "methodsLabel": "Observed methods",
+      "methods": [
+        "Resource ID enumeration",
+        "Abuse of read and export endpoints",
+        "Session reuse with lateral privilege"
+      ],
+      "endpointsLabel": "Endpoints involved",
+      "endpoints": [
+        "GET /api/v1/users/{id}",
+        "GET /api/v1/accounts/{id}/documents",
+        "POST /api/v1/export"
+      ],
+      "dataLabel": "Data at risk",
+      "dataImpact": "Account PII (name, email, attached documents), export metadata, and session tokens potentially reusable until rotation.",
+      "riskLabel": "Risk range",
+      "risk": "High to critical — multi-tenant exposure of personal data and bulk extraction via export.",
+      "responseLabel": "Response and close",
+      "response": "Mass revocation of sessions for the affected role, rotation of signing secrets, tenant-scoped authz hardening on all three endpoints, export rate limits, alerts on ID enumeration, and review of access logs in the incident window."
+    },
+    "cta": "If you need an audit or post-incident response — we should talk.",
+    "ctaConnect": "Connect"
+  },
   "connect": {
     "title": "Connect",
     "body": "If you need someone who designs the service, hardens it, and understands how it breaks — we should talk. In earnest.",
     "shabbatNote": "I reply after Shabbat. The profiles can be read; mail is not opened until Motzaei Shabbat.",
     "closing": "Backend, web logic, low-level systems, and security: one profile that closes the loop. If we talk, we talk in earnest.",
+    "faqLink": "Frequently asked questions",
     "links": {
       "github": "GitHub",
       "instagram": "Instagram",
       "telegram": "Telegram",
       "email": "Email"
     }
+  },
+  "errors": {
+    "notFound": {
+      "code": "404",
+      "title": "This path does not exist",
+      "body": "The page you want is not on askforvini.pw. Go home or read the FAQ.",
+      "ctaHome": "Home",
+      "ctaFaq": "FAQ"
+    },
+    "forbidden": {
+      "code": "403",
+      "title": "Access not allowed",
+      "body": "You do not have permission to view this resource. If this was a mistake, go back home.",
+      "ctaHome": "Home"
+    },
+    "server": {
+      "code": "500",
+      "title": "Something failed on this side",
+      "body": "An unexpected error occurred. Try again; if it persists, write after Shabbat.",
+      "ctaHome": "Home",
+      "ctaRetry": "Try again"
+    }
+  },
+  "faq": {
+    "metaTitle": "FAQ — askforvini.pw",
+    "metaDescription": "Frequently asked questions about security audits, incident response, full-stack, frontend, and backend work.",
+    "title": "Frequently asked questions",
+    "lede": "Short answers for people evaluating an audit, post-incident response, or a build engagement. If something is missing, write.",
+    "ctaConnect": "Connect",
+    "groups": [
+      {
+        "id": "general",
+        "label": "General and pricing",
+        "items": [
+          {
+            "q": "What is the estimated price?",
+            "a": "It depends on scope. A security audit is not priced like a product build. Work can be billed hourly or as a fixed project once the scope is clear. Currency is US dollars (USD)."
+          },
+          {
+            "q": "How do payments work?",
+            "a": "In USD. Hourly or fixed project, as agreed. Deposit and payment milestones are set when scope is locked; there is no public fixed rate without a brief."
+          },
+          {
+            "q": "What is the delivery timeline?",
+            "a": "It depends on complexity, the access you provide, and the kind of work (audit, incident response, or build). Small scopes close faster; larger ones ship in milestones."
+          },
+          {
+            "q": "What if scope changes mid-project?",
+            "a": "We re-quote. Extra hours or a project addendum; scope creep is not absorbed silently. Better to say it early than stretch the same price."
+          },
+          {
+            "q": "How do we start?",
+            "a": "A serious message with the problem, the stack, and the outcome you want. We agree scope, billing (hourly or project), and a work window. I reply after Shabbat."
+          },
+          {
+            "q": "When do you reply? What about Shabbat?",
+            "a": "While observing Shabbat, the craft rests. Profiles can be read; mail is not opened until Motzaei Shabbat. After that, I reply in earnest."
+          },
+          {
+            "q": "Which languages and time zone?",
+            "a": "Spanish and English. Based in Santa Cruz de la Sierra, Bolivia; when I give Shabbat or other cutoffs, I use Argentina time (as on the site note)."
+          },
+          {
+            "q": "Is there confidentiality or an NDA?",
+            "a": "Yes. Work is under agreement. Reports and findings go only to the authorized client. I do not publish real client cases or client data on the portfolio."
+          },
+          {
+            "q": "Do you work remotely?",
+            "a": "Yes. Based in Santa Cruz de la Sierra; the craft is remote unless the work requires presence."
+          },
+          {
+            "q": "How does this relate to Mercav.lat?",
+            "a": "Mercav.lat is the role and the product. Audit, incident-response, or build engagements are agreed separately: they are not Mercav customer support or a marketplace help channel."
+          },
+          {
+            "q": "Is there maintenance after delivery?",
+            "a": "Delivery closes the agreed scope; it does not include open-ended support. Ongoing maintenance or iterations can be hired hourly or as a separate package."
+          },
+          {
+            "q": "Who is this for — and who is it not for?",
+            "a": "For teams and products that want a service that closes cleanly, a serious audit, or post-incident response with an actionable report. Not for offensive catalogs, cheats, or “break X for me” without a defensive mandate and clear authorization."
+          }
+        ]
+      },
+      {
+        "id": "audit",
+        "label": "Security audit",
+        "items": [
+          {
+            "q": "What does an audit include?",
+            "a": "Surface review (APIs, authn/authz, flows), findings prioritized by risk, and a remediation-oriented report. I document the failure and the fix — not an exploitation playbook."
+          },
+          {
+            "q": "What do you need from the client?",
+            "a": "Agreed access (staging or scoped prod), a map of relevant endpoints or repos, and a technical contact. Without that, scope and timeline inflate."
+          },
+          {
+            "q": "What is out of scope?",
+            "a": "I do not deliver offensive catalogs or recipes to break third-party systems. Grey-hat here means studying offense to design defense."
+          }
+        ]
+      },
+      {
+        "id": "incident",
+        "label": "Incident response",
+        "items": [
+          {
+            "q": "What do you deliver after an incident?",
+            "a": "Timeline and entry vector, observed methods (patterns, not payloads), endpoints involved, data at risk, severity range, and a containment-and-close plan."
+          },
+          {
+            "q": "How urgent is the work?",
+            "a": "Containment and evidence first; reconstruction and report second. The window depends on severity and how much access the team gets."
+          },
+          {
+            "q": "Does it help if the attack already happened?",
+            "a": "Yes. Post-incident work reconstructs what happened, what was exposed, and what to harden so the same path stops being usable."
+          }
+        ]
+      },
+      {
+        "id": "fullstack",
+        "label": "Full-stack development",
+        "items": [
+          {
+            "q": "What does a full-stack engagement cover?",
+            "a": "Backend and web logic (HTTP contracts, domain, auth, data) plus the UI needed for the product to close. One profile that designs the service and understands how it breaks."
+          },
+          {
+            "q": "How is it priced?",
+            "a": "Fixed project when scope is closed, or hourly when scope is evolving. Timeline follows complexity and client dependencies. Currency is USD."
+          }
+        ]
+      },
+      {
+        "id": "frontend",
+        "label": "Frontend only",
+        "items": [
+          {
+            "q": "Do you take frontend-only work?",
+            "a": "Yes, when the scope is UI, accessibility, and consuming defined APIs. If the backend is weak, I say so early: UI does not hide broken authz."
+          },
+          {
+            "q": "What stack do you prefer?",
+            "a": "TypeScript and React / Next when it fits. I adapt to the product stack when API contracts are clear."
+          }
+        ]
+      },
+      {
+        "id": "backend",
+        "label": "Backend only",
+        "items": [
+          {
+            "q": "Do you take backend-only work?",
+            "a": "Yes: APIs, authn/authz, domain, persistence, jobs, and clear layer boundaries. Also low-level C++20 when the problem calls for it."
+          },
+          {
+            "q": "What do you deliver?",
+            "a": "Code and contracts that hold under load and abuse, with explicit auth and data limits. Endpoint and design notes when the project needs them."
+          }
+        ]
+      }
+    ]
   },
   "shabbat": {
     "title": "Shabbat",

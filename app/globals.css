@@ -160,6 +160,16 @@ button:focus-visible,
   background: transparent;
 }
 
+#top,
+#about,
+#pillars,
+#work,
+#security,
+#connect,
+#main {
+  scroll-margin-top: 4.5rem;
+}
+
 .site-header.is-stuck::before {
   content: "";
   position: absolute;

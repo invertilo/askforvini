@@ -9,7 +9,9 @@
     "about": "Acerca",
     "pillars": "Pilares",
     "work": "Trabajo",
-    "connect": "Conectar"
+    "security": "Seguridad",
+    "connect": "Conectar",
+    "faq": "FAQ"
   },
   "hero": {
     "brand": "askforvini",
@@ -119,17 +121,235 @@
       }
     ]
   },
+  "security": {
+    "title": "Auditoría y respuesta a incidentes",
+    "lede": "Cuando ya hubo un ataque — o cuando hay que demostrar cómo se habría entrado — reconstruyo el camino: vector, métodos observados, endpoints tocados, datos en riesgo y qué cerrar. Informe accionable, no un playbook de explotación.",
+    "phasesLabel": "Cómo trabajo",
+    "phases": [
+      {
+        "title": "Contención y evidencia",
+        "body": "Aislar la superficie activa, preservar logs, tokens y artefactos sin pisar la escena. Primero dejar de sangrar; después explicar."
+      },
+      {
+        "title": "Timeline y vector de entrada",
+        "body": "Ordenar qué pasó y en qué orden: credencial abusada, sesión robada, IDOR, flujo mal acotado. El “cómo llegaron” tiene que ser defendible."
+      },
+      {
+        "title": "Superficie: endpoints y auth",
+        "body": "Mapear authn/authz, objetos mal acotados, abuso de flujos y cadenas de confianza. Qué endpoint devolvía qué, bajo qué identidad."
+      },
+      {
+        "title": "Impacto y rango de riesgo",
+        "body": "Clasificar datos expuestos (PII, tokens, registros, secretos) y severidad de bajo a crítico, con justificación clara para negocio y técnico."
+      },
+      {
+        "title": "Cierre e informe",
+        "body": "Revocar, rotar, parchear controles, alertas y un informe que diga qué pasó, qué se robó o pudo robarse, y qué queda por endurecer."
+      }
+    ],
+    "case": {
+      "eyebrow": "Caso ilustrativo (anónimo)",
+      "title": "API con objeto mal acotado",
+      "summary": "Reconstrucción de un incidente tipificado en API REST: un actor abusó de un identificador predecible y de un endpoint de exportación con authz incompleta. No es un cliente real; es el formato del informe que entrego.",
+      "vectorLabel": "Vector de entrada",
+      "vector": "Sesión válida de un rol de soporte + acceso a recursos de otros tenants vía IDOR en identificadores de recurso.",
+      "methodsLabel": "Métodos observados",
+      "methods": [
+        "Enumeración de IDs de recurso",
+        "Abuso de endpoints de lectura y export",
+        "Reutilización de sesión con privilegio lateral"
+      ],
+      "endpointsLabel": "Endpoints implicados",
+      "endpoints": [
+        "GET /api/v1/users/{id}",
+        "GET /api/v1/accounts/{id}/documents",
+        "POST /api/v1/export"
+      ],
+      "dataLabel": "Datos en riesgo",
+      "dataImpact": "PII de cuentas (nombre, email, documentos adjuntos), metadatos de exportación y tokens de sesión potencialmente reutilizables hasta rotación.",
+      "riskLabel": "Rango de riesgo",
+      "risk": "Alto a crítico — exposición multi-tenant de datos personales y capacidad de extracción en lote vía export.",
+      "responseLabel": "Respuesta y cierre",
+      "response": "Revocación masiva de sesiones del rol afectado, rotación de secretos de firma, endurecimiento de authz por tenant en los tres endpoints, rate limit en export, alertas por enumeración de IDs y revisión de accesos históricos en la ventana del incidente."
+    },
+    "cta": "Si necesitás auditoría o respuesta post-incidente — hablamos.",
+    "ctaConnect": "Conectar"
+  },
   "connect": {
     "title": "Conectar",
     "body": "Si necesitás alguien que diseña el servicio, lo endurece y entiende cómo se rompe — hablamos. En serio.",
     "shabbatNote": "Respondo después de Shabat. Los perfiles se pueden leer; el correo no se abre hasta Motzaei Shabat.",
     "closing": "Backend, lógica web, sistemas de bajo nivel y seguridad: un solo perfil que cierra el círculo. Si hay que hablar, que sea en serio.",
+    "faqLink": "Preguntas frecuentes",
     "links": {
       "github": "GitHub",
       "instagram": "Instagram",
       "telegram": "Telegram",
       "email": "Correo"
     }
+  },
+  "errors": {
+    "notFound": {
+      "code": "404",
+      "title": "Esta ruta no existe",
+      "body": "La página que buscás no está en askforvini.pw. Volvé al inicio o mirá el FAQ.",
+      "ctaHome": "Inicio",
+      "ctaFaq": "FAQ"
+    },
+    "forbidden": {
+      "code": "403",
+      "title": "Acceso no permitido",
+      "body": "No tenés permiso para ver este recurso. Si llegó por error, volvé al inicio.",
+      "ctaHome": "Inicio"
+    },
+    "server": {
+      "code": "500",
+      "title": "Algo falló de este lado",
+      "body": "Hubo un error inesperado. Probá de nuevo; si sigue, escribime después.",
+      "ctaHome": "Inicio",
+      "ctaRetry": "Reintentar"
+    }
+  },
+  "faq": {
+    "metaTitle": "FAQ — askforvini.pw",
+    "metaDescription": "Preguntas frecuentes sobre auditoría de seguridad, respuesta a incidentes, desarrollo full stack, frontend y backend.",
+    "title": "Preguntas frecuentes",
+    "lede": "Respuestas cortas para quienes evalúan una auditoría, respuesta post-incidente, o un encargo de desarrollo. Si falta algo, escribime.",
+    "ctaConnect": "Conectar",
+    "groups": [
+      {
+        "id": "general",
+        "label": "General y precios",
+        "items": [
+          {
+            "q": "Cuánto es el precio estimado?",
+            "a": "Depende del alcance. Una auditoría de seguridad no se cotiza igual que un desarrollo. Se puede cobrar por hora trabajada o por proyecto cerrado; lo acordamos cuando el alcance está claro. La moneda es dólares estadounidenses (USD)."
+          },
+          {
+            "q": "Cómo se pagan los encargos?",
+            "a": "En USD. Por hora o por proyecto, según lo acordado. Anticipo e hitos de pago se definen al cerrar el alcance; no hay tarifa pública fija sin brief."
+          },
+          {
+            "q": "Cuál es el plazo de entrega?",
+            "a": "Depende de la complejidad, del acceso que den al sistema, y del tipo de trabajo (auditoría, respuesta a incidente, o build). Un alcance chico cierra más rápido; uno grande se parte en hitos."
+          },
+          {
+            "q": "Qué pasa si el alcance cambia a mitad de camino?",
+            "a": "Se re-cotiza. Horas extra o un addendum de proyecto; no se absorbe el cambio en silencio. Mejor decirlo temprano que estirar el mismo precio."
+          },
+          {
+            "q": "Cómo arrancamos?",
+            "a": "Un mensaje serio con el problema, el stack, y el resultado que buscan. Acordamos alcance, modalidad (hora o proyecto), y ventana de trabajo. Respondo después de Shabat."
+          },
+          {
+            "q": "Cuándo respondés? Y el Shabat?",
+            "a": "En observación de Shabat el oficio descansa. Los perfiles se pueden leer; el correo no se abre hasta Motzaei Shabat. Después de eso, respondo en serio."
+          },
+          {
+            "q": "En qué idiomas y zona horaria trabajás?",
+            "a": "Español e inglés. Base en Santa Cruz de la Sierra, Bolivia; cuando doy horarios de Shabat u otros cortes, uso referencia Argentina (como en la nota del sitio)."
+          },
+          {
+            "q": "Hay confidencialidad o NDA?",
+            "a": "Sí. El trabajo se hace bajo acuerdo. El informe y los hallazgos van solo al cliente autorizado. No publico casos reales ni datos de clientes en el portfolio."
+          },
+          {
+            "q": "Trabajás remoto?",
+            "a": "Sí. Santa Cruz de la Sierra; el oficio es remoto salvo que el trabajo exija presencia."
+          },
+          {
+            "q": "Cómo se relaciona esto con Mercav.lat?",
+            "a": "Mercav.lat es el cargo y el producto. Los encargos de auditoría, respuesta a incidentes o desarrollo se acuerdan aparte: no son atención al cliente de Mercav ni un canal de soporte del marketplace."
+          },
+          {
+            "q": "Hay mantenimiento después de la entrega?",
+            "a": "La entrega cierra el alcance acordado; no incluye soporte abierto indefinido. Si hace falta mantenimiento o iteraciones, se contrata por hora o por paquete aparte."
+          },
+          {
+            "q": "Para quién es este trabajo — y para quién no?",
+            "a": "Para equipos y productos que quieren un servicio que cierre bien, una auditoría seria, o respuesta post-incidente con informe accionable. No para pedidos de catálogos ofensivos, cheats, ni “rompeme X” sin mandato defensivo y autorización clara."
+          }
+        ]
+      },
+      {
+        "id": "audit",
+        "label": "Auditoría de seguridad",
+        "items": [
+          {
+            "q": "Qué incluye una auditoría?",
+            "a": "Revisión de superficie (APIs, authn/authz, flujos), hallazgos priorizados por riesgo, e informe con remediación. Documento el fallo y el cierre — no un playbook de explotación."
+          },
+          {
+            "q": "Qué necesitás del cliente?",
+            "a": "Acceso acordado (staging o prod acotado), mapa de endpoints o repos relevantes, y un contacto técnico. Sin eso el alcance se infla y el plazo también."
+          },
+          {
+            "q": "Qué no incluye?",
+            "a": "No entrego catálogos ofensivos ni recetas para romper sistemas de terceros. Grey-hat aquí significa estudiar el ataque para diseñar la defensa."
+          }
+        ]
+      },
+      {
+        "id": "incident",
+        "label": "Respuesta a incidentes",
+        "items": [
+          {
+            "q": "Qué entregás después de un incidente?",
+            "a": "Timeline y vector de entrada, métodos observados (patrones, no payloads), endpoints implicados, datos en riesgo, rango de severidad, y plan de contención y cierre."
+          },
+          {
+            "q": "Con qué urgencia trabajás?",
+            "a": "Primero contención y evidencia; después reconstrucción e informe. La ventana depende de la gravedad y de cuánto acceso den al equipo."
+          },
+          {
+            "q": "Sirve si el ataque ya pasó?",
+            "a": "Sí. Post-incidente se reconstruye qué pasó, qué se expuso, y qué endurecer para que el mismo camino no vuelva a ser usable."
+          }
+        ]
+      },
+      {
+        "id": "fullstack",
+        "label": "Desarrollo full stack",
+        "items": [
+          {
+            "q": "Qué cubre un encargo full stack?",
+            "a": "Backend y lógica web (contratos HTTP, dominio, auth, datos) más la interfaz necesaria para que el producto cierre. Un solo perfil que diseña el servicio y entiende cómo se rompe."
+          },
+          {
+            "q": "Cómo se cotiza?",
+            "a": "Por proyecto cuando el alcance está cerrado, o por hora cuando el alcance evoluciona. El plazo sigue la complejidad y las dependencias del cliente. La moneda es USD."
+          }
+        ]
+      },
+      {
+        "id": "frontend",
+        "label": "Solo frontend",
+        "items": [
+          {
+            "q": "Hacés solo frontend?",
+            "a": "Sí, cuando el alcance es UI, accesibilidad, y consumo de APIs ya definidas. Si el backend está flojo, lo digo temprano: la UI no tapa authz rota."
+          },
+          {
+            "q": "Qué stack preferís?",
+            "a": "TypeScript y React / Next cuando encaja. Me adapto al stack del producto si el contrato de APIs es claro."
+          }
+        ]
+      },
+      {
+        "id": "backend",
+        "label": "Solo backend",
+        "items": [
+          {
+            "q": "Hacés solo backend?",
+            "a": "Sí: APIs, authn/authz, dominio, persistencia, jobs y límites claros entre capas. También C++20 de bajo nivel cuando el problema lo pide."
+          },
+          {
+            "q": "Qué entregás?",
+            "a": "Código y contratos que aguantan carga y abuso, con límites de auth y datos explícitos. Documentación de endpoints y decisiones de diseño cuando el proyecto lo requiere."
+          }
+        ]
+      }
+    ]
   },
   "shabbat": {
     "title": "Shabat",

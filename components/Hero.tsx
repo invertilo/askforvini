@@ -1,5 +1,6 @@
 "use client";
 
+import { InPageAnchor } from "@/components/InPageAnchor";
 import { SiteAscii } from "@/components/SiteAscii";
 import { AnnotatedText } from "@/components/ui/annotated-text";
 import { GrainGradient } from "@/components/ui/grain-gradient";
@@ -106,12 +107,12 @@ export function Hero({ locale, copy }: HeroProps) {
               </span>
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <a
+              <InPageAnchor
                 href={`/${locale}#connect`}
                 className="inline-flex min-h-11 items-center justify-center rounded-full bg-accent px-5 font-medium text-accent-fg"
               >
                 {copy.ctaConnect}
-              </a>
+              </InPageAnchor>
               <a
                 href={MERCAV_HREF}
                 rel="noreferrer"
