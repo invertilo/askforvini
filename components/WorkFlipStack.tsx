@@ -139,7 +139,7 @@ function FlipCard({
       }}
     >
       <motion.div
-        className="grid h-full overflow-hidden rounded-[clamp(18px,2vw,30px)] sm:grid-cols-[1.15fr_0.85fr]"
+        className="grid h-full overflow-hidden rounded-[clamp(18px,2vw,30px)] shadow-[0_16px_48px_rgb(18_17_14/0.18)] ring-1 ring-white/10 sm:grid-cols-[1.15fr_0.85fr]"
         style={{
           backgroundColor: item.background,
           color: item.foreground ?? "white",
@@ -163,7 +163,7 @@ function StaticWorkList({ items }: { items: WorkFlipItem[] }) {
       {items.map((item, index) => (
         <article
           key={`${item.title}-${index}`}
-          className="grid overflow-hidden rounded-[clamp(18px,2vw,30px)] sm:grid-cols-[1.15fr_0.85fr]"
+          className="grid overflow-hidden rounded-[clamp(18px,2vw,30px)] shadow-[0_16px_48px_rgb(18_17_14/0.14)] ring-1 ring-white/10 sm:grid-cols-[1.15fr_0.85fr]"
           style={{
             backgroundColor: item.background,
             color: item.foreground ?? "white",

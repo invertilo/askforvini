@@ -41,7 +41,7 @@ export function Work({ copy }: WorkProps) {
         <p className="mt-2 max-w-[42rem] font-data text-[0.8125rem] text-content-secondary">
           {copy.githubHint}
         </p>
-        <div className="mt-6 overflow-x-auto pb-2">
+        <div className="mt-6 overflow-x-auto rounded-2xl border border-hairline/50 bg-surface-raised/50 p-4 shadow-[0_8px_28px_rgb(18_17_14/0.05)] backdrop-blur-sm">
           <GithubCalendarSafe
             username="invertilo"
             colorSchema="blue"

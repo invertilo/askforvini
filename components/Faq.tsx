@@ -27,9 +27,9 @@ export function Faq({ locale, copy }: FaqProps) {
             <h2 className="font-data text-[0.8125rem] tracking-[0.14em] text-content-secondary uppercase">
               {group.label}
             </h2>
-            <div className="mt-4 divide-y divide-hairline border-y border-hairline">
+            <div className="mt-4 overflow-hidden rounded-2xl border border-hairline/60 bg-surface-raised/40 divide-y divide-hairline/80 backdrop-blur-sm">
               {group.items.map((item) => (
-                <details key={item.q} className="group py-4">
+                <details key={item.q} className="group px-4 py-4 md:px-5">
                   <summary className="cursor-pointer list-none font-display text-[1.1rem] font-medium leading-snug text-content marker:content-none [&::-webkit-details-marker]:hidden">
                     <span className="flex items-start justify-between gap-4">
                       <span>{item.q}</span>

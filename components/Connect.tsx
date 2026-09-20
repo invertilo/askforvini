@@ -3,6 +3,7 @@
 import { GithubIcon, InstagramIcon } from "@/components/BrandIcons";
 import { KineticText } from "@/components/motion/KineticText";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
+import { SectionSoftEdges } from "@/components/SectionSoftEdges";
 import { useShabbat } from "@/components/ShabbatProvider";
 import { TelegramIcon } from "@/components/TelegramIcon";
 import { ClosingPlasma } from "@/components/ui/closing-plasma";
@@ -33,10 +34,7 @@ export function Connect({ locale, copy }: ConnectProps) {
 
   return (
     <section id="connect" className="relative overflow-x-hidden pb-24 pt-2 md:pb-32 md:pt-4">
-      <div
-        className="pointer-events-none absolute inset-x-0 -top-20 bottom-0 -z-0 opacity-[0.44] md:-top-28 [mask-image:linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_10%,rgba(0,0,0,0.55)_22%,black_40%,black_76%,rgba(0,0,0,0.45)_90%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_10%,rgba(0,0,0,0.55)_22%,black_40%,black_76%,rgba(0,0,0,0.45)_90%,transparent_100%)]"
-        aria-hidden="true"
-      >
+      <SectionSoftEdges className="opacity-[0.44]">
         <ClosingPlasma
           className="h-full min-h-[100%] w-full"
           speed={reduce ? 0 : 0.7}
@@ -52,15 +50,7 @@ export function Connect({ locale, copy }: ConnectProps) {
           lightColorB="#3A6EA5"
           lightColorC="#C4A36A"
         />
-      </div>
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-52 bg-gradient-to-b from-surface from-0% via-surface/40 via-[48%] to-transparent to-100% md:h-64"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-surface from-0% via-surface/35 via-50% to-transparent to-100% md:h-40"
-        aria-hidden="true"
-      />
+      </SectionSoftEdges>
       <div className="page-wrap relative z-[1]">
         <KineticText as="h2" className="font-display text-[1.75rem] font-medium leading-tight">
           {copy.title}

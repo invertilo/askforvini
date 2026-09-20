@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useState } from "react";
 import { motion } from "framer-motion";
-import { load as loadFont } from "opentype.js";
+import { parse as parseFont } from "opentype.js";
 import { cn } from "@/lib/utils";
 
 interface SignatureProps {
@@ -26,6 +26,15 @@ interface SignatureProps {
   fontUrl?: string;
 }
 
+async function loadFontFromUrl(url: string) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Font fetch failed: ${response.status}`);
+  }
+  const buffer = await response.arrayBuffer();
+  return parseFont(buffer);
+}
+
 export function Signature({
   text = "Signature",
   color = "currentColor",
@@ -39,9 +48,9 @@ export function Signature({
 }: SignatureProps) {
   const [paths, setPaths] = useState<string[] | null>(null);
   const [width, setWidth] = useState<number>(300);
-  const height = fontSize * 3; // Give plenty of vertical space
+  const height = fontSize * 3;
   const horizontalPadding = fontSize * 0.1;
-  const topMargin = fontSize * 1.5; // Shift down
+  const topMargin = fontSize * 1.5;
   const baseline = topMargin;
   const maskId = `signature-reveal-${useId().replace(/:/g, "")}`;
 
@@ -50,18 +59,14 @@ export function Signature({
 
     async function load() {
       try {
-        let font;
         const fontPaths = fontUrl
           ? [fontUrl]
-          : [
-              "/LastoriaBoldRegular.otf",
-              "./LastoriaBoldRegular.otf",
-              "https://www.componentry.fun/LastoriaBoldRegular.otf",
-            ];
+          : ["/signature.ttf", "/LastoriaBoldRegular.otf"];
 
+        let font = null;
         for (const path of fontPaths) {
           try {
-            font = await loadFont(path as string);
+            font = await loadFontFromUrl(path);
             break;
           } catch {
             // Try next path

@@ -1,6 +1,7 @@
 "use client";
 
 import { InPageAnchor } from "@/components/InPageAnchor";
+import { SectionSoftEdges } from "@/components/SectionSoftEdges";
 import { SiteAscii } from "@/components/SiteAscii";
 import { AnnotatedText } from "@/components/ui/annotated-text";
 import { GrainGradient } from "@/components/ui/grain-gradient";
@@ -38,8 +39,8 @@ export function Hero({ locale, copy }: HeroProps) {
   const theme = useTheme();
 
   return (
-    <section id="top" className="relative overflow-hidden pb-16 pt-16 md:pb-24 md:pt-24">
-      <div className="pointer-events-none absolute inset-0 -z-0 min-h-full opacity-80 md:opacity-85" aria-hidden="true">
+    <section id="top" className="relative overflow-x-hidden pb-16 pt-16 md:pb-24 md:pt-24">
+      <SectionSoftEdges className="opacity-80 md:opacity-85" bleed={false}>
         <GrainGradient
           className="absolute inset-0 h-full min-h-full w-full"
           colorLight={theme === "light" ? "#F1EBE0" : "#3A6EA5"}
@@ -51,7 +52,7 @@ export function Hero({ locale, copy }: HeroProps) {
           scale={1.15}
           curve={0.48}
         />
-      </div>
+      </SectionSoftEdges>
       <div className="page-wrap relative z-[1]">
         <div className="grid items-end gap-10 md:grid-cols-[minmax(0,1fr)_auto]">
           <div>

@@ -170,6 +170,79 @@ button:focus-visible,
   scroll-margin-top: 4.5rem;
 }
 
+/* Soft joins for full-bleed section atmospheres (Hero, Pillars, Connect). */
+.section-atmos {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(0 0 0 / 0.2) 10%,
+    rgb(0 0 0 / 0.55) 22%,
+    black 40%,
+    black 76%,
+    rgb(0 0 0 / 0.45) 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(0 0 0 / 0.2) 10%,
+    rgb(0 0 0 / 0.55) 22%,
+    black 40%,
+    black 76%,
+    rgb(0 0 0 / 0.45) 90%,
+    transparent 100%
+  );
+}
+
+.section-atmos--bleed {
+  top: -5rem;
+}
+
+@media (min-width: 768px) {
+  .section-atmos--bleed {
+    top: -7rem;
+  }
+}
+
+.section-veil {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  z-index: 0;
+}
+
+.section-veil--top {
+  top: 0;
+  height: 13rem;
+  background: linear-gradient(
+    to bottom,
+    var(--surface) 0%,
+    color-mix(in srgb, var(--surface) 40%, transparent) 48%,
+    transparent 100%
+  );
+}
+
+.section-veil--bottom {
+  bottom: 0;
+  height: 8rem;
+  background: linear-gradient(
+    to top,
+    var(--surface) 0%,
+    color-mix(in srgb, var(--surface) 35%, transparent) 50%,
+    transparent 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .section-veil--top {
+    height: 16rem;
+  }
+
+  .section-veil--bottom {
+    height: 10rem;
+  }
+}
+
 .site-header.is-stuck::before {
   content: "";
   position: absolute;
@@ -262,8 +335,10 @@ button:focus-visible,
 .photo-frame {
   position: relative;
   overflow: hidden;
-  border-radius: 1.25rem;
+  border-radius: 1.5rem;
   background: var(--surface-raised);
+  border: 1px solid color-mix(in srgb, var(--content) 8%, transparent);
+  box-shadow: 0 12px 40px rgb(18 17 14 / 0.08);
 }
 
 .photo-frame img,

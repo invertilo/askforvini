@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionSoftEdges } from "@/components/SectionSoftEdges";
 import { SiteAscii } from "@/components/SiteAscii";
 import { KineticText } from "@/components/motion/KineticText";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
@@ -27,11 +28,8 @@ export function Pillars({ copy }: PillarsProps) {
   const reduce = useReducedMotion();
 
   return (
-    <section id="pillars" className="relative overflow-hidden pb-20 md:pb-28">
-      <div
-        className="pointer-events-none absolute inset-0 -z-0 opacity-[0.28]"
-        aria-hidden="true"
-      >
+    <section id="pillars" className="relative overflow-x-hidden pb-20 md:pb-28">
+      <SectionSoftEdges className="opacity-[0.28]">
         <AuroraFlow
           className="h-full min-h-[100%] w-full"
           colors={["#3A6EA5", "#C4A36A", "#1C1A16", "#EBE4D6"]}
@@ -43,7 +41,7 @@ export function Pillars({ copy }: PillarsProps) {
           lighting={!reduce}
           ambientGlow={!reduce}
         />
-      </div>
+      </SectionSoftEdges>
       <div className="page-wrap relative z-[1]">
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
           <article>
@@ -76,7 +74,7 @@ export function Pillars({ copy }: PillarsProps) {
               {copy.stack.map((item) => (
                 <li
                   key={item}
-                  className="rounded-full bg-surface-raised/90 px-3 py-1.5 font-data text-[0.8125rem] text-content backdrop-blur-sm"
+                  className="rounded-full border border-hairline/50 bg-surface-raised/75 px-3 py-1.5 font-data text-[0.8125rem] text-content shadow-[0_6px_18px_rgb(18_17_14/0.05)] backdrop-blur-md"
                 >
                   {item}
                 </li>
