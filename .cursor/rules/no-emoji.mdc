@@ -1,0 +1,10 @@
+---
+description: Never use emoji characters in this project
+alwaysApply: true
+---
+
+# No emoji
+
+Do not use emoji characters anywhere in this project: UI copy, alt text, metadata, Open Graph, comments, commits, filenames, or generated files.
+
+Use Lucide icons (one stroke weight) for interface glyphs. Icon-only controls must have an accessible name (`aria-label` or visible text).

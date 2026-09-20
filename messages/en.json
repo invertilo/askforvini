@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title": "Vinicius — askforvini.pw",
+    "description": "Vinicius. Santa Cruz de la Sierra. Backend, web logic, C++20, reverse engineering, offensive and defensive security, APIs. CEO of Mercav.lat. The hire who designs the service and knows how it breaks."
+  },
+  "skip": "Skip to content",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "pillars": "Pillars",
+    "work": "Work",
+    "connect": "Connect"
+  },
+  "hero": {
+    "brand": "askforvini",
+    "tld": ".pw",
+    "name": "Vinicius",
+    "place": "Santa Cruz de la Sierra, Bolivia",
+    "lede": "I design backend and web logic (APIs, auth, domain), low-level C++20, reverse engineering, and offensive/defensive security. CEO of Mercav.lat. If the service must hold and close cleanly, I am who you want on the call.",
+    "motto": "בעזרת השם, כל עכבה לטובה.",
+    "mottoLang": "he",
+    "roleWords": ["Backend", "APIs", "RE", "Defense"],
+    "roles": "Backend · Web logic · Systems / C++ · Reverse engineering · Offensive and defensive security · Markets and chain",
+    "velocitySkills": "C++20 · Backend · TypeScript · REST · Auth · SQL · Docker · OWASP API · Reverse engineering · Defense · Chain",
+    "ctaConnect": "Connect",
+    "ctaMercav": "Mercav.lat",
+    "portraitAlt": "Portrait of Vinicius"
+  },
+  "about": {
+    "title": "About Me",
+    "body": "I am Vinicius, 19, living in Santa Cruz de la Sierra, Bolivia. I build backend and web logic end to end — HTTP contracts, business rules, authn/authz, data — and I also read systems at a low level and security. Three axes of the day: serious technology, offensive and defensive cybersecurity, and Jewish halakha as a practical standard. I am not a one-tool niche: I design the service, harden it, and understand how it breaks.",
+    "signature": "askforvini",
+    "portraitAlt": "Portrait of Vinicius"
+  },
+  "pillars": {
+    "craftTitle": "Craft",
+    "craftBody": "I start from how a program holds state, talks on the network, and defends itself. In backend and web logic I design APIs, data models, sessions/JWT as contracts, jobs, and observability. In C++20 and RE I work memory, binaries, and overlays that must stay stable under load. On offense I map real failures on endpoints and surface; on defense I close the same path with controls, integrity, and telemetry. I also read markets and chain. Grey-hat here means studying offense to design defense — not publishing recipes.",
+    "craftRepel": "I design the service. I test it. I close it.",
+    "faithTitle": "Yahadut",
+    "faithBody": "In Santa Cruz de la Sierra, learning and the practice of halakha are not a footer. They are the other standard of the same day. Halakha sets the rhythm; the craft is measured with the same seriousness. בעזרת השם, כל עכבה לטובה — every delay is for the good.",
+    "faithMotto": "בעזרת השם, כל עכבה לטובה.",
+    "atmosphereAlt": "Vinicius at night in a plaza, wearing a kippah",
+    "stackLabel": "Tools",
+    "stack": [
+      "C++20",
+      "TypeScript",
+      "Node",
+      "Python",
+      "REST",
+      "SQL",
+      "Authn / Authz",
+      "Docker",
+      "IDA / Ghidra",
+      "OWASP API",
+      "Offensive / defensive",
+      "Crypto / chain"
+    ]
+  },
+  "work": {
+    "title": "Work",
+    "hint": "Keep scrolling",
+    "endLabel": "Let's talk",
+    "githubTitle": "GitHub activity",
+    "githubHint": "invertilo — the rhythm of the craft, not just the README",
+    "items": [
+      {
+        "title": "Backend and web logic",
+        "kind": "Services and domain",
+        "body": "I design and ship backend: HTTP contracts, business rules, authentication and authorization, persistence, and clear layer boundaries. Web logic is not empty CRUD: it is the system that must be correct under load and under abuse.",
+        "href": "https://github.com/invertilo",
+        "linkLabel": "github.com/invertilo",
+        "image": "/secundaria.png",
+        "background": "#1C1A16",
+        "foreground": "#F3EDE2"
+      },
+      {
+        "title": "API security",
+        "kind": "Endpoints and surface",
+        "body": "I review APIs and endpoints as attack and defense surface: authn/authz, poorly scoped objects, flow abuse, secrets, rate limits, and trust chains. I document the failure and the fix — not an exploitation playbook.",
+        "href": "https://github.com/invertilo",
+        "linkLabel": "github.com/invertilo",
+        "image": "/principal.png",
+        "background": "#12110E",
+        "foreground": "#F3EDE2"
+      },
+      {
+        "title": "Offense and defense",
+        "kind": "Security research",
+        "body": "Both sides of the same problem. Offense: surface, logic, and binaries to see where a system yields. Defense: controls, integrity, and telemetry so that path stops being usable. Blind defense does not work.",
+        "href": "https://github.com/invertilo",
+        "linkLabel": "github.com/invertilo",
+        "image": "/secundaria.png",
+        "background": "#1C1A16",
+        "foreground": "#F3EDE2"
+      },
+      {
+        "title": "Fernet",
+        "kind": "Client research",
+        "body": "C++20 tooling: Windows systems, high-performance overlays, and client integrity. On this site it is defense and stability research — not an offensive catalog.",
+        "href": "https://github.com/invertilo",
+        "linkLabel": "github.com/invertilo",
+        "image": "/principal.png",
+        "background": "#12110E",
+        "foreground": "#F3EDE2"
+      },
+      {
+        "title": "Mercav.lat",
+        "kind": "Role",
+        "body": "CEO. The product lives at mercav.lat; here, the role and the link. The rest of the site speaks to the technical craft.",
+        "href": "https://mercav.lat",
+        "linkLabel": "mercav.lat",
+        "image": "/secundaria.png",
+        "background": "#3A6EA5",
+        "foreground": "#FFFFFF"
+      }
+    ]
+  },
+  "connect": {
+    "title": "Connect",
+    "body": "If you need someone who designs the service, hardens it, and understands how it breaks — we should talk. In earnest.",
+    "shabbatNote": "I reply after Shabbat. The profiles can be read; mail is not opened until Motzaei Shabbat.",
+    "closing": "Backend, web logic, low-level systems, and security: one profile that closes the loop. If we talk, we talk in earnest.",
+    "links": {
+      "github": "GitHub",
+      "instagram": "Instagram",
+      "telegram": "Telegram",
+      "email": "Email"
+    }
+  },
+  "shabbat": {
+    "title": "Shabbat",
+    "greeting": "שבת שלום",
+    "body": "I am observing Shabbat. The work rests; so do I. I read messages after 6:30 p.m. Argentina time on Saturday.",
+    "continue": "Continue Reading"
+  }
+}

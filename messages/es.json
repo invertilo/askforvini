@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title": "Vinicius — askforvini.pw",
+    "description": "Vinicius. Santa Cruz de la Sierra. Backend, lógica web, C++20, ingeniería inversa, seguridad ofensiva y defensiva, APIs. CEO de Mercav.lat. El perfil que cierra el servicio y entiende cómo se rompe."
+  },
+  "skip": "Saltar al contenido",
+  "nav": {
+    "home": "Inicio",
+    "about": "About",
+    "pillars": "Pilares",
+    "work": "Trabajo",
+    "connect": "Conectar"
+  },
+  "hero": {
+    "brand": "askforvini",
+    "tld": ".pw",
+    "name": "Vinicius",
+    "place": "Santa Cruz de la Sierra, Bolivia",
+    "lede": "Diseño backend y lógica web (APIs, auth, dominio), C++20 de bajo nivel, ingeniería inversa, y seguridad ofensiva/defensiva. CEO de Mercav.lat. Si el servicio tiene que aguantar y cerrarse bien, soy a quien conviene llamar.",
+    "motto": "בעזרת השם, כל עכבה לטובה.",
+    "mottoLang": "he",
+    "roleWords": ["Backend", "APIs", "RE", "Defense"],
+    "roles": "Backend · Web logic · Systems / C++ · Reverse engineering · Offensive and defensive security · Markets and chain",
+    "velocitySkills": "C++20 · Backend · TypeScript · REST · Auth · SQL · Docker · OWASP API · Reverse engineering · Defense · Chain",
+    "ctaConnect": "Conectar",
+    "ctaMercav": "Mercav.lat",
+    "portraitAlt": "Retrato de Vinicius"
+  },
+  "about": {
+    "title": "About Me",
+    "body": "Soy Vinicius, tengo 19 años y vivo en Santa Cruz de la Sierra, Bolivia. Construyo backend y lógica web de punta a punta — contratos HTTP, reglas de negocio, authn/authz, datos — y al mismo tiempo leo sistemas a bajo nivel y seguridad. Tres ejes del día: tecnología seria, ciberseguridad ofensiva y defensiva, y la halajá judía como estándar práctico. No soy un perfil de niche de un solo tool: soy alguien que diseña el servicio, lo endurece y entiende cómo se rompe.",
+    "signature": "askforvini",
+    "portraitAlt": "Retrato de Vinicius"
+  },
+  "pillars": {
+    "craftTitle": "Oficio",
+    "craftBody": "Empiezo por cómo un programa guarda estado, habla por la red y se protege. En backend y lógica web diseño APIs, modelos de datos, sesiones/JWT como contrato, jobs y observabilidad. En C++20 y RE trabajo memoria, binarios y overlays que tienen que ser estables bajo carga. En seguridad ofensiva mapeo fallos reales en endpoints y superficie; en defensiva cierro el mismo camino con controles, integridad y telemetría. También leo mercados y chain. Grey-hat aquí significa estudiar el ataque para diseñar la defensa — no publicar recetas.",
+    "craftRepel": "Diseño el servicio. Lo pruebo. Lo cierro.",
+    "faithTitle": "Yahadut",
+    "faithBody": "En Santa Cruz de la Sierra el estudio y la práctica de la halajá no son un “about” al pie: son el otro estándar del mismo día. La halajá ordena el ritmo; el oficio se mide con la misma seriedad. בעזרת השם, כל עכבה לטובה — cada traba es para bien.",
+    "faithMotto": "בעזרת השם, כל עכבה לטובה.",
+    "atmosphereAlt": "Vinicius de noche en una plaza, con kipá",
+    "stackLabel": "Herramientas",
+    "stack": [
+      "C++20",
+      "TypeScript",
+      "Node",
+      "Python",
+      "REST",
+      "SQL",
+      "Authn / Authz",
+      "Docker",
+      "IDA / Ghidra",
+      "OWASP API",
+      "Ofensiva / defensiva",
+      "Crypto / chain"
+    ]
+  },
+  "work": {
+    "title": "Trabajo",
+    "hint": "Seguí scrolleando",
+    "endLabel": "Hablemos",
+    "githubTitle": "Actividad en GitHub",
+    "githubHint": "invertilo — el ritmo del oficio, no solo el README",
+    "items": [
+      {
+        "title": "Backend y lógica web",
+        "kind": "Servicios y dominio",
+        "body": "Diseño y desarrollo backend: contratos HTTP, reglas de negocio, autenticación y autorización, persistencia y límites claros entre capas. La lógica web no es un CRUD vacío: es el sistema que tiene que ser correcto bajo carga y bajo abuso.",
+        "href": "https://github.com/invertilo",
+        "linkLabel": "github.com/invertilo",
+        "image": "/secundaria.png",
+        "background": "#1C1A16",
+        "foreground": "#F3EDE2"
+      },
+      {
+        "title": "Seguridad de APIs",
+        "kind": "Endpoints y superficie",
+        "body": "Reviso APIs y endpoints como superficie de ataque y de defensa: authn/authz, objetos mal acotados, abuso de flujos, secretos, rate limits y cadenas de confianza. Documento el fallo y el cierre — no un playbook de explotación.",
+        "href": "https://github.com/invertilo",
+        "linkLabel": "github.com/invertilo",
+        "image": "/principal.png",
+        "background": "#12110E",
+        "foreground": "#F3EDE2"
+      },
+      {
+        "title": "Ofensiva y defensiva",
+        "kind": "Research de seguridad",
+        "body": "Ambos lados del mismo problema. Ofensiva: superficie, lógica y binarios para ver dónde cede. Defensiva: controles, integridad y telemetría para que ese camino deje de ser usable. La defensa ciega no sirve.",
+        "href": "https://github.com/invertilo",
+        "linkLabel": "github.com/invertilo",
+        "image": "/secundaria.png",
+        "background": "#1C1A16",
+        "foreground": "#F3EDE2"
+      },
+      {
+        "title": "Fernet",
+        "kind": "Research de clientes",
+        "body": "Tooling en C++20: sistemas Windows, overlays de alto rendimiento e integridad de clientes. En este sitio es research de defensa y estabilidad — no un catálogo ofensivo.",
+        "href": "https://github.com/invertilo",
+        "linkLabel": "github.com/invertilo",
+        "image": "/principal.png",
+        "background": "#12110E",
+        "foreground": "#F3EDE2"
+      },
+      {
+        "title": "Mercav.lat",
+        "kind": "Cargo",
+        "body": "CEO. El producto vive en mercav.lat; aquí el cargo y el enlace. El resto del sitio habla del oficio técnico.",
+        "href": "https://mercav.lat",
+        "linkLabel": "mercav.lat",
+        "image": "/secundaria.png",
+        "background": "#3A6EA5",
+        "foreground": "#FFFFFF"
+      }
+    ]
+  },
+  "connect": {
+    "title": "Conectar",
+    "body": "Si necesitás alguien que diseña el servicio, lo endurece y entiende cómo se rompe — hablamos. En serio.",
+    "shabbatNote": "Respondo después de Shabat. Los perfiles se pueden leer; el correo no se abre hasta Motzaei Shabat.",
+    "closing": "Backend, lógica web, sistemas de bajo nivel y seguridad: un solo perfil que cierra el círculo. Si hay que hablar, que sea en serio.",
+    "links": {
+      "github": "GitHub",
+      "instagram": "Instagram",
+      "telegram": "Telegram",
+      "email": "Correo"
+    }
+  },
+  "shabbat": {
+    "title": "Shabat",
+    "greeting": "שבת שלום",
+    "body": "Estoy en observación de Shabat. El oficio descansa; yo también. Vuelvo a leer mensajes después de las 18:30 (Argentina) del sábado.",
+    "continue": "Continuar leyendo"
+  }
+}
