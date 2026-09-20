@@ -38,17 +38,17 @@ export function Hero({ locale, copy }: HeroProps) {
 
   return (
     <section id="top" className="relative overflow-hidden pb-16 pt-16 md:pb-24 md:pt-24">
-      <div className="pointer-events-none absolute inset-0 -z-0 min-h-full opacity-95" aria-hidden="true">
+      <div className="pointer-events-none absolute inset-0 -z-0 min-h-full opacity-80 md:opacity-85" aria-hidden="true">
         <GrainGradient
           className="absolute inset-0 h-full min-h-full w-full"
-          colorLight={theme === "light" ? "#EBE4D6" : "#3A6EA5"}
+          colorLight={theme === "light" ? "#F1EBE0" : "#3A6EA5"}
           colorMid={theme === "light" ? "#F4EFE4" : "#1C1A16"}
-          colorDark={theme === "light" ? "#C4A36A" : "#12110E"}
-          grain={theme === "light" ? 0.5 : 0.58}
+          colorDark={theme === "light" ? "#D8C9A8" : "#12110E"}
+          grain={theme === "light" ? 0.32 : 0.58}
           speed={reduce ? 0 : 1.2}
-          softness={0.42}
-          scale={1.2}
-          curve={0.55}
+          softness={theme === "light" ? 0.55 : 0.42}
+          scale={1.15}
+          curve={0.48}
         />
       </div>
       <div className="page-wrap relative z-[1]">
@@ -95,7 +95,7 @@ export function Hero({ locale, copy }: HeroProps) {
               </AnnotatedText>
               <span>, כל עכבה לטובה.</span>
             </p>
-            <p className="mt-6 max-w-[40rem] text-content-secondary">{copy.lede}</p>
+            <p className="mt-6 max-w-[40rem] text-content">{copy.lede}</p>
             <p
               className="mt-4 max-w-[40rem] font-data text-[0.8125rem] text-content-secondary"
               aria-label={copy.roles}

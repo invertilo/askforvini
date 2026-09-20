@@ -185,7 +185,12 @@ export function ClosingPlasma({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mouseRef = useRef({ x: 0.5, y: 0.5 });
   const targetMouseRef = useRef({ x: 0.5, y: 0.5 });
-  const isDarkRef = useRef(1);
+  const isDarkRef = useRef(
+    typeof document !== "undefined" &&
+      document.documentElement.getAttribute("data-theme") === "light"
+      ? 0
+      : 1,
+  );
   const themeModeRef = useRef(themeMode);
 
   useEffect(() => {

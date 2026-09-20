@@ -106,21 +106,22 @@ export function Signature({
     visible: { pathLength: 1, opacity: 1 },
   };
 
-  if (paths !== null && paths.length === 0) {
+  if (paths === null || paths.length === 0) {
     return (
       <p
         className={cn(
-          "font-display text-[1.5rem] italic leading-none tracking-tight",
+          "font-display text-[1.5rem] italic leading-none tracking-tight text-content",
           className,
         )}
         style={{ color, fontSize }}
+        aria-hidden={paths === null ? true : undefined}
       >
         {text}
       </p>
     );
   }
 
-  const drawn = paths ?? [];
+  const drawn = paths;
 
   return (
     <motion.svg
@@ -129,7 +130,7 @@ export function Signature({
       height={height}
       viewBox={`0 0 ${width} ${height}`}
       fill="none"
-      className={cn("text-foreground overflow-visible", className)}
+      className={cn("text-content overflow-visible", className)}
       initial="hidden"
       whileInView={inView ? "visible" : undefined}
       animate={inView ? undefined : "visible"}

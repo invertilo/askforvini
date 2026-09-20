@@ -96,11 +96,13 @@
       {
         "title": "Fernet",
         "kind": "Client research",
-        "body": "C++20 tooling: Windows systems, high-performance overlays, and client integrity. On this site it is defense and stability research — not an offensive catalog.",
+        "body": "Fernet is custom C++20 tooling on Windows clients: high-performance overlays, process-state readouts, and integrity under load. It is how I study where a client holds, where the surface yields, and how to close it — defense and reverse-engineering research, not an offensive catalog or abuse recipes.",
         "href": "https://github.com/invertilo",
         "linkLabel": "github.com/invertilo",
-        "image": "/principal.png",
-        "background": "#12110E",
+        "image": "/fernet-logo.png",
+        "imageAlt": "Fernet logo: stylized F with Argentine flag",
+        "imageFit": "contain",
+        "background": "#0A0A0A",
         "foreground": "#F3EDE2"
       },
       {
@@ -109,9 +111,11 @@
         "body": "CEO. The product lives at mercav.lat; here, the role and the link. The rest of the site speaks to the technical craft.",
         "href": "https://mercav.lat",
         "linkLabel": "mercav.lat",
-        "image": "/secundaria.png",
-        "background": "#3A6EA5",
-        "foreground": "#FFFFFF"
+        "image": "/mercav-logo.png",
+        "imageAlt": "Mercav logo: gold monogram on black",
+        "imageFit": "contain",
+        "background": "#0A0A0A",
+        "foreground": "#F3EDE2"
       }
     ]
   },

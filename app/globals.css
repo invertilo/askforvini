@@ -25,11 +25,14 @@ html[data-theme="light"] {
   --surface: #f4efe4;
   --surface-raised: #ebe4d6;
   --content: #1a1814;
-  --content-secondary: #5c564c;
-  --hairline: rgb(26 24 20 / 0.12);
-  --header-glass: rgb(244 239 228 / 0.72);
-  --grain-a: rgb(58 110 165 / 0.1);
-  --grain-b: rgb(196 163 106 / 0.12);
+  --content-secondary: #3f3a32;
+  --accent: #2f5f92;
+  --accent-fg: #ffffff;
+  --signal: #5a4018;
+  --hairline: rgb(26 24 20 / 0.14);
+  --header-glass: rgb(244 239 228 / 0.82);
+  --grain-a: rgb(58 110 165 / 0.08);
+  --grain-b: rgb(196 163 106 / 0.08);
 }
 
 @media (prefers-contrast: more) {
@@ -389,9 +392,29 @@ button:focus-visible,
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-surface text-content;
   }
   html {
     @apply font-sans;
   }
+}
+
+/* Brand tokens must win over shadcn :root --accent overwrite */
+html[data-theme="dark"],
+:root:not([data-theme="light"]) {
+  --accent: #3a6ea5;
+  --accent-fg: #ffffff;
+  --signal: #c4a36a;
+  --foreground: var(--content);
+  --muted-foreground: var(--content-secondary);
+  --accent-foreground: var(--accent-fg);
+}
+
+html[data-theme="light"] {
+  --accent: #2f5f92;
+  --accent-fg: #ffffff;
+  --signal: #5a4018;
+  --foreground: var(--content);
+  --muted-foreground: var(--content-secondary);
+  --accent-foreground: var(--accent-fg);
 }

@@ -6,7 +6,7 @@
   "skip": "Saltar al contenido",
   "nav": {
     "home": "Inicio",
-    "about": "About",
+    "about": "Acerca",
     "pillars": "Pilares",
     "work": "Trabajo",
     "connect": "Conectar"
@@ -27,7 +27,7 @@
     "portraitAlt": "Retrato de Vinicius"
   },
   "about": {
-    "title": "About Me",
+    "title": "Sobre mí",
     "body": "Soy Vinicius, tengo 19 años y vivo en Santa Cruz de la Sierra, Bolivia. Construyo backend y lógica web de punta a punta — contratos HTTP, reglas de negocio, authn/authz, datos — y al mismo tiempo leo sistemas a bajo nivel y seguridad. Tres ejes del día: tecnología seria, ciberseguridad ofensiva y defensiva, y la halajá judía como estándar práctico. No soy un perfil de niche de un solo tool: soy alguien que diseña el servicio, lo endurece y entiende cómo se rompe.",
     "signature": "askforvini",
     "portraitAlt": "Retrato de Vinicius"
@@ -96,11 +96,13 @@
       {
         "title": "Fernet",
         "kind": "Research de clientes",
-        "body": "Tooling en C++20: sistemas Windows, overlays de alto rendimiento e integridad de clientes. En este sitio es research de defensa y estabilidad — no un catálogo ofensivo.",
+        "body": "Fernet es tooling propio en C++20 sobre clientes Windows: overlays de alto rendimiento, lectura de estado del proceso e integridad bajo carga. Sirve para estudiar cómo un cliente se mantiene estable, dónde cede la superficie y cómo cerrarla — research de defensa y RE, no un catálogo ofensivo ni recetas de abuso.",
         "href": "https://github.com/invertilo",
         "linkLabel": "github.com/invertilo",
-        "image": "/principal.png",
-        "background": "#12110E",
+        "image": "/fernet-logo.png",
+        "imageAlt": "Logo de Fernet: F estilizada con bandera argentina",
+        "imageFit": "contain",
+        "background": "#0A0A0A",
         "foreground": "#F3EDE2"
       },
       {
@@ -109,9 +111,11 @@
         "body": "CEO. El producto vive en mercav.lat; aquí el cargo y el enlace. El resto del sitio habla del oficio técnico.",
         "href": "https://mercav.lat",
         "linkLabel": "mercav.lat",
-        "image": "/secundaria.png",
-        "background": "#3A6EA5",
-        "foreground": "#FFFFFF"
+        "image": "/mercav-logo.png",
+        "imageAlt": "Logo de Mercav: monograma dorado sobre negro",
+        "imageFit": "contain",
+        "background": "#0A0A0A",
+        "foreground": "#F3EDE2"
       }
     ]
   },

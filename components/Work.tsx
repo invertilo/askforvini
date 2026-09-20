@@ -9,17 +9,22 @@ type WorkProps = {
 };
 
 export function Work({ copy }: WorkProps) {
-  const items = copy.items.map((item) => ({
-    eyebrow: item.kind,
-    title: item.title,
-    description: item.body,
-    image: item.image,
-    imageAlt: item.title,
-    background: item.background,
-    foreground: item.foreground,
-    href: item.href,
-    linkLabel: item.linkLabel,
-  }));
+  const items = copy.items.map((item) => {
+    const fit =
+      "imageFit" in item && item.imageFit === "contain" ? ("contain" as const) : ("cover" as const);
+    return {
+      eyebrow: item.kind,
+      title: item.title,
+      description: item.body,
+      image: item.image,
+      imageAlt: "imageAlt" in item && typeof item.imageAlt === "string" ? item.imageAlt : item.title,
+      imageFit: fit,
+      background: item.background,
+      foreground: item.foreground,
+      href: item.href,
+      linkLabel: item.linkLabel,
+    };
+  });
 
   return (
     <section id="work" className="pb-20 md:pb-28">
