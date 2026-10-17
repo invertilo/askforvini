@@ -4,6 +4,15 @@ import type { NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const host = request.headers.get("host")?.split(":")[0];
+  if (host === "opinion.askforvini.pw" && (pathname === "/" || pathname === "/es" || pathname === "/en")) {
+    const locale = pathname === "/es" || pathname === "/en"
+      ? pathname.slice(1)
+      : localeFromAcceptLanguage(request.headers.get("accept-language"));
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}/opinion`;
+    return NextResponse.rewrite(url);
+  }
   const hasLocale = locales.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   );
@@ -18,6 +27,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|_next/data|favicon.ico|icon|apple-icon|opengraph-image|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|ttf|otf|woff|woff2)$).*)",
+    "/((?!_next/static|_next/image|_next/data|favicon.ico|icon|apple-icon|opengraph-image|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|ttf|otf|woff|woff2|mp4|webm)$).*)",
   ],
 };

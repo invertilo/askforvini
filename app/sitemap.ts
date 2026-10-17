@@ -29,5 +29,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: { es: `${base}/es/faq`, en: `${base}/en/faq` },
       },
     },
+    {
+      url: "https://opinion.askforvini.pw/es/opinion",
+      lastModified,
+      alternates: { languages: { es: "https://opinion.askforvini.pw/es/opinion", en: "https://opinion.askforvini.pw/en/opinion" } },
+    },
+    {
+      url: "https://opinion.askforvini.pw/en/opinion",
+      lastModified,
+      alternates: { languages: { es: "https://opinion.askforvini.pw/es/opinion", en: "https://opinion.askforvini.pw/en/opinion" } },
+    },
+    {
+      url: "https://opinion.askforvini.pw/es/opinion/marchas-plaza-24-septiembre",
+      lastModified,
+      alternates: { languages: { es: "https://opinion.askforvini.pw/es/opinion/marchas-plaza-24-septiembre", en: "https://opinion.askforvini.pw/en/opinion/marchas-plaza-24-septiembre" } },
+    },
+    {
+      url: "https://opinion.askforvini.pw/en/opinion/marchas-plaza-24-septiembre",
+      lastModified,
+      alternates: { languages: { es: "https://opinion.askforvini.pw/es/opinion/marchas-plaza-24-septiembre", en: "https://opinion.askforvini.pw/en/opinion/marchas-plaza-24-septiembre" } },
+    },
   ];
 }
