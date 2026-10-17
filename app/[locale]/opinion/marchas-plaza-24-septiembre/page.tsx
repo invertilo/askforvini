@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     metadataBase: new URL("https://opinion.askforvini.pw"),
     title: locale === "es" ? "¿Qué hay detrás de estas marchas? | Opinión — askforvini" : "What is behind these marches? | Opinion — askforvini",
-    description: locale === "es" ? "Nueve láminas de opinión y material documental sobre conversaciones en torno a marchas en Santa Cruz de la Sierra." : "Nine illustrated panels on conversations about protests in Santa Cruz de la Sierra.",
+    description: locale === "es" ? "Nueve láminas de opinión que documentan antisemitismo, vandalismo y contradicciones presentadas como protesta." : "Nine illustrated panels documenting antisemitism, vandalism, and contradictions presented as protest.",
     alternates: { canonical: path, languages: { es: "/es/opinion/marchas-plaza-24-septiembre", en: "/en/opinion/marchas-plaza-24-septiembre" } },
   };
 }
@@ -106,7 +106,7 @@ export default async function MarchasArticle({ params }: { params: Promise<{ loc
         <div className="page-wrap opinion-article-intro">
           <p className="opinion-article-kicker">{isEnglish ? "LONG READ" : "PUBLICACIÓN EXTENSA"} <span>·</span> {isEnglish ? "09 PANELS" : "09 LÁMINAS"} <span>·</span> SANTA CRUZ DE LA SIERRA</p>
           <h1>{isEnglish ? <>What is behind<br />these marches?</> : <>¿Qué hay detrás<br />de estas marchas?</>}</h1>
-          <p className="opinion-article-deck">{isEnglish ? "A personal reading of shared conversations about protests in Plaza 24 de Septiembre: their arguments, contradictions, and responsibilities that should remain part of the debate." : "Una lectura personal de conversaciones compartidas sobre protestas en la Plaza 24 de Septiembre: sus argumentos, sus contradicciones y las responsabilidades que no deberían quedar fuera del debate."}</p>
+          <p className="opinion-article-deck">{isEnglish ? "A documented opinion on how antisemitism, hate, and incitement can be presented as protest in Plaza 24 de Septiembre—and why evidence must remain part of the debate." : "Una opinión documentada sobre cómo el antisemitismo, el odio y la incitación pueden presentarse como protesta en la Plaza 24 de Septiembre, y por qué las pruebas deben seguir en el centro del debate."}</p>
           <div className="opinion-article-meta"><span>VINICIUS / {isEnglish ? "OPINION" : "OPINIÓN"}</span><span>{isEnglish ? "VISUAL STORY · 9 CHAPTERS" : "LECTURA VISUAL · 9 CAPÍTULOS"}</span></div>
         </div>
 

@@ -6,8 +6,8 @@ import type { Metadata } from "next";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  const title = locale === "es" ? "Opinión — askforvini" : "Opinion — askforvini";
-  const description = locale === "es" ? "Videos y publicaciones de opinión de Vinicius." : "Videos and opinion pieces by Vinicius.";
+  const title = locale === "es" ? "Antisemitismo disfrazado de protesta — askforvini" : "Antisemitism disguised as protest — askforvini";
+  const description = locale === "es" ? "Opinión y material documental para exponer antisemitismo, odio y contradicciones presentadas como protesta." : "Opinion and documentary material exposing antisemitism, hate, and contradictions presented as protest.";
   return {
     metadataBase: new URL("https://opinion.askforvini.pw"),
     title, description,

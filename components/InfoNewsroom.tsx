@@ -13,40 +13,40 @@ const copy = {
   es: {
     back: "askforvini.pw",
     label: "OPINIÓN / ARCHIVO",
-    title: "Lo que está pasando,\ny lo que significa.",
-    intro: "Una mirada personal a la actualidad, las protestas y las preguntas que quedan después del titular.",
+    title: "Cuando la protesta\nse disfraza.",
+    intro: "Un archivo de opinión para documentar antisemitismo, odio y contradicciones que no deben presentarse como activismo legítimo.",
     latest: "Publicaciones",
-    featured: "Análisis destacado",
+    featured: "Investigación destacada",
     listen: "Ver video",
     read: "Leer opinión",
-    topics: ["Todo", "Protestas"],
+    topics: ["Todo", "Antisemitismo"],
     signal: "ARCHIVO EDITORIAL",
-    about: "Una mirada propia sobre el presente",
+    about: "Señalar el odio también es responsabilidad",
     aboutText: "No somos una sala de prensa. Somos una voz con contexto, criterio y espacio para disentir.",
   },
   en: {
     back: "askforvini.pw",
     label: "OPINION / ARCHIVE",
-    title: "What is happening,\nand what it means.",
-    intro: "A personal view of current events, protests, and the questions left after the headline.",
+    title: "When protest\nwears a disguise.",
+    intro: "An opinion archive documenting antisemitism, hate, and contradictions that should not be presented as legitimate activism.",
     latest: "Publications",
-    featured: "Featured analysis",
+    featured: "Featured investigation",
     listen: "Watch video",
     read: "Read opinion",
-    topics: ["All", "Protests"],
+    topics: ["All", "Antisemitism"],
     signal: "EDITORIAL ARCHIVE",
-    about: "A point of view on the present",
+    about: "Calling out hate is also responsibility",
     aboutText: "We are not a newsroom. We are a voice with context, judgment, and room to disagree.",
   },
 } as const;
 
 const stories = {
   es: [
-    { category: "Protestas", title: "¿Qué hay detrás de estas marchas?", excerpt: "Nueve láminas sobre conversaciones en torno a las marchas en la Plaza 24 de Septiembre, Santa Cruz de la Sierra.", kind: "article", href: "/opinion/marchas-plaza-24-septiembre", image: "/opinion/marchas/111.webp", detail: "9 LÁMINAS" },
+    { category: "Antisemitismo", title: "¿Qué hay detrás de estas marchas?", excerpt: "Nueve láminas que exponen cómo el odio antisemita, el vandalismo y la desinformación intentan camuflarse como protesta.", kind: "article", href: "/opinion/marchas-plaza-24-septiembre", image: "/opinion/marchas/111.webp", detail: "9 LÁMINAS" },
     { category: "Protestas", title: "¿Niños en primera línea?", excerpt: "Una opinión sobre la presencia de menores durante las manifestaciones y la responsabilidad de protegerlos.", kind: "video", href: "#featured-video", image: "/info-video-poster.jpg", detail: "VIDEO · 45 S" },
   ],
   en: [
-    { category: "Protests", title: "What is behind these marches?", excerpt: "Nine illustrated panels on conversations about protests in Plaza 24 de Septiembre, Santa Cruz de la Sierra.", kind: "article", href: "/opinion/marchas-plaza-24-septiembre", image: "/opinion/marchas/111.webp", detail: "9 PANELS" },
+    { category: "Antisemitism", title: "What is behind these marches?", excerpt: "Nine panels documenting how antisemitic hate, vandalism, and misinformation can be camouflaged as protest.", kind: "article", href: "/opinion/marchas-plaza-24-septiembre", image: "/opinion/marchas/111.webp", detail: "9 PANELS" },
     { category: "Protests", title: "Children on the front line?", excerpt: "An opinion on the presence of minors at protests and the responsibility to protect them.", kind: "video", href: "#featured-video", image: "/info-video-poster.jpg", detail: "VIDEO · 45 S" },
   ],
 };
@@ -112,7 +112,7 @@ export function InfoNewsroom({ locale }: { locale: Locale }) {
 
         <section className="info-feature page-wrap" id="featured-video">
           <div className="info-feature-visual info-tone-blue"><video ref={videoRef} className="info-feature-video" preload="metadata" poster="/info-video-poster.jpg" playsInline aria-label="Opinión en primera persona" onClick={() => void togglePlay()}><source src="/IMG_7366-web-1080p.mp4" type="video/mp4" /><source src="/IMG_7366-web-1080p.webm" type="video/webm" />Tu navegador no puede reproducir este video.</video><span className="info-feature-index">01 / 02</span>{videoError && <div className="info-video-error" role="alert">No se pudo reproducir el video. <a href="/IMG_7366-web-1080p.mp4">Abrir MP4 ↗</a></div>}<div className="info-video-controls"><input className="info-video-range" type="range" min="0" max="100" step="0.1" value={progress} disabled={!duration} onChange={(event) => seek(Number(event.target.value))} aria-label="Progreso del video" style={{ "--progress": `${progress}%` } as CSSProperties} /><div className="info-video-control-row"><button type="button" onClick={() => void togglePlay()} aria-label={playing ? "Pausar video" : "Reproducir video"}>{playing ? <Pause size={16} fill="currentColor" /> : <Play size={16} fill="currentColor" />}</button><span className="info-video-time">{formatTime(currentTime)} <i>/</i> {formatTime(duration)}</span><span className="info-video-spacer" /><button type="button" onClick={() => { const video = videoRef.current; if (video) { video.muted = !video.muted; setMuted(video.muted); } }} aria-label={muted ? "Activar sonido" : "Silenciar video"}>{muted ? <VolumeX size={16} /> : <Volume2 size={16} />}</button><button type="button" onClick={() => { const player = videoRef.current?.parentElement; if (player?.requestFullscreen) void player.requestFullscreen(); else videoRef.current?.requestFullscreen(); }} aria-label="Pantalla completa"><Maximize2 size={16} /></button></div></div></div>
-          <div className="info-feature-copy"><div className="info-kicker">{t.featured} · {allStories[0].category}</div><h2>{locale === "es" ? "¿Niños en primera línea?" : "Children on the front line?"}</h2><p>{locale === "es" ? "Una opinión sobre la presencia de menores durante las manifestaciones y la responsabilidad de protegerlos antes que cualquier causa." : "An opinion on the presence of minors at protests and the responsibility to protect them."}</p><button type="button" className="info-arrow" onClick={() => { videoRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }); void togglePlay(); }}>{t.listen} <ArrowUpRight size={17} /></button></div>
+          <div className="info-feature-copy"><div className="info-kicker">{t.featured} · {allStories[0].category}</div><h2>{locale === "es" ? "¿Niños en primera línea?" : "Children on the front line?"}</h2><p>{locale === "es" ? "Una investigación de opinión sobre el uso de menores y la forma en que ciertas consignas intentan convertir una protesta en un escudo para el odio." : "An opinion investigation into the use of minors and the way some slogans try to turn protest into cover for hate."}</p><button type="button" className="info-arrow" onClick={() => { videoRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }); void togglePlay(); }}>{t.listen} <ArrowUpRight size={17} /></button></div>
         </section>
 
         <section className="info-feed page-wrap" id="feed">
