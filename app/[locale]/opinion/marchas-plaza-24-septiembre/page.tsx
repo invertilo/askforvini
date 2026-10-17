@@ -64,15 +64,15 @@ const chapters = [
 ] as const;
 
 const englishChapters = [
-  { title: "What is behind these marches?", context: "The starting point: compare public slogans with conversations documented in the screenshots." },
-  { title: "Understanding the demands", context: "One screenshot asks for a clearer explanation of the decrees being opposed. The opinion asks how well participants understand those demands." },
-  { title: "Criticism and the state", context: "This panel offers an editorial reading of criticism of the government alongside demands for public resources. It does not describe every protester." },
-  { title: "The presence of minors", context: "The screenshot shows a poll about minors and a message about forming a group. It does not, by itself, confirm where they would stand during a march." },
-  { title: "Preparing for confrontation", context: "A conversation mentions protective items and masks for marches. The publication asks what that preparation means for the nature of the protest." },
-  { title: "An antisemitic phrase", context: "The screenshot contains a statement about Jewish people. The criticism concerns that statement, without attributing it to an entire protest." },
-  { title: "Political criticism and identity", context: "The message combines a wish to change the government with an attack on people identified as Zionists. The panel separates legitimate criticism from attacks on people." },
-  { title: "Damage is not an answer", context: "The screenshot describes vandalism attributed to a black bloc. The reflection argues that the aim of a march does not justify damage to property." },
-  { title: "Responsibility is part of protest", context: "The closing panel brings together information, protection of minors, rejection of threats, and limits on damage." },
+  { title: "What is behind these marches?", context: "The starting point: compare public slogans with conversations documented in the screenshots.", translation: "What is behind these marches? They present themselves as protests for rights and justice, but the conversations reveal contradictions, missing information, and preparation for possible confrontations." },
+  { title: "Understanding the demands", context: "One screenshot asks for a clearer explanation of the decrees being opposed. The opinion asks how well participants understand those demands.", translation: "This is not social awareness: it is repeating slogans without understanding them. Criticizing the government is a right, but the criticism must be informed." },
+  { title: "Criticism and the state", context: "This panel offers an editorial reading of criticism of the government alongside demands for public resources. It does not describe every protester.", translation: "Why demand that a government fall while asking that same state for solutions, support, and benefits? That is not coherence; it is convenience." },
+  { title: "The presence of minors", context: "The screenshot shows a poll about minors and a message about forming a group. It does not, by itself, confirm where they would stand during a march.", translation: "A group of minors at the front would expose children as a human barrier. No cause justifies putting children at risk." },
+  { title: "Preparing for confrontation", context: "A conversation mentions protective items and masks for marches. The publication asks what that preparation means for the nature of the protest.", translation: "Are they preparing a peaceful march or a confrontation? Talking about masks and self-defense items suggests preparation for a clash." },
+  { title: "An antisemitic phrase", context: "The screenshot contains a statement about Jewish people. The criticism concerns that statement, without attributing it to an entire protest.", translation: "Saying ‘Jew that I see, Jew that I kick’ is not a joke. It is antisemitism and a threat against people because of their identity. Age does not excuse hate." },
+  { title: "Political criticism and identity", context: "The message combines a wish to change the government with an attack on people identified as Zionists. The panel separates legitimate criticism from attacks on people.", translation: "Criticizing a government is legitimate. Turning people into targets because of their identity is not justice; it is hate disguised as rebellion." },
+  { title: "Damage is not an answer", context: "The screenshot describes vandalism attributed to a black bloc. The reflection argues that the aim of a march does not justify damage to property.", translation: "A cause does not turn vandalism into justice. Public property belongs to everyone, and private property is not a legitimate target." },
+  { title: "Responsibility is part of protest", context: "The closing panel brings together information, protection of minors, rejection of threats, and limits on damage.", translation: "A protest loses authority when it relies on minors as shields, masks for confrontation, identity-based insults, and vandalism. Facts expose the story." },
 ];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -123,6 +123,7 @@ export default async function MarchasArticle({ params }: { params: Promise<{ loc
                 <Image src={`/opinion/marchas/${chapter.file}.webp`} alt={chapter.alt} width={1254} height={1254} sizes="(max-width: 960px) 100vw, 960px" priority={index === 0} />
                 <figcaption>{isEnglish ? "Panel" : "Lámina"} {String(index + 1).padStart(2, "0")} · {isEnglish ? "Visual material supplied by Vinicius" : "Material visual aportado por Vinicius"}</figcaption>
               </figure>
+              {isEnglish && "translation" in chapter && <aside className="opinion-panel-translation"><span>TRANSLATED PANEL TEXT</span><p>{chapter.translation}</p></aside>}
             </section>
           ))}
         </div>
