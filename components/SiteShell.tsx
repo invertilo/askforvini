@@ -3,6 +3,7 @@
 import { About } from "@/components/About";
 import { Connect } from "@/components/Connect";
 import { Hero } from "@/components/Hero";
+import { MercavIntro } from "@/components/MercavIntro";
 import { Pillars } from "@/components/Pillars";
 import { ShabbatGate } from "@/components/ShabbatGate";
 import { ShabbatProvider, useShabbat } from "@/components/ShabbatProvider";
@@ -38,6 +39,7 @@ export function SiteShell({ locale, messages }: SiteShellProps) {
       <InertWhenGated>
         <SiteHeader locale={locale} nav={messages.nav} />
         <main id="main">
+          <MercavIntro locale={locale} copy={messages.mercavIntro} />
           <Hero locale={locale} copy={messages.hero} />
           <About copy={messages.about} />
           <Pillars copy={messages.pillars} />

@@ -91,10 +91,10 @@ export function Hero({ locale, copy }: HeroProps) {
                 <FlippingWordSwap words={copy.roleWords} className="text-content" />
               </span>
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-wrap gap-4">
               <InPageAnchor
                 href={`/${locale}#connect`}
-                className="inline-flex min-h-11 items-center justify-center rounded-full bg-accent px-5 font-medium text-accent-fg"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-accent px-6 font-medium text-accent-fg shadow-sm transition-all duration-200 hover:shadow-md hover:brightness-110"
               >
                 {copy.ctaConnect}
               </InPageAnchor>
@@ -102,7 +102,7 @@ export function Hero({ locale, copy }: HeroProps) {
                 href={MERCAV_HREF}
                 rel="noreferrer"
                 target="_blank"
-                className="inline-flex min-h-11 items-center justify-center rounded-full border border-hairline px-5 font-medium text-content"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-hairline px-6 font-medium text-content transition-all duration-200 hover:border-accent hover:bg-accent/5"
               >
                 {copy.ctaMercav}
               </a>

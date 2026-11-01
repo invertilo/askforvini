@@ -34,6 +34,13 @@
     "signature": "askforvini",
     "portraitAlt": "Portrait of Vinicius"
   },
+  "mercavIntro": {
+    "eyebrow": "Meet Mervi",
+    "title": "Mercav.lat",
+    "body": "A marketplace for small businesses to sell, manage inventory, take payments and grow. Built with systems thinking: every operator deserves tools that hold under real conditions. I design it, scale it, and understand where it breaks.",
+    "ctaLabel": "Visit Mercav.lat",
+    "ctaHref": "https://mercav.lat"
+  },
   "pillars": {
     "craftTitle": "Craft",
     "craftBody": "I start from how a program holds state, talks on the network, and defends itself. In backend and web logic I design APIs, data models, sessions/JWT as contracts, jobs, and observability. In C++20 and RE I work memory, binaries, and overlays that must stay stable under load. On offense I map real failures on endpoints and surface; on defense I close the same path with controls, integrity, and telemetry. I also read markets and chain. Grey-hat here means studying offense to design defense — not publishing recipes.",
@@ -93,18 +100,6 @@
         "linkLabel": "github.com/invertilo",
         "image": "/secundaria.png",
         "background": "#1C1A16",
-        "foreground": "#F3EDE2"
-      },
-      {
-        "title": "Fernet",
-        "kind": "Client research",
-        "body": "Fernet is custom C++20 tooling on Windows clients: high-performance overlays, process-state readouts, and integrity under load. It is how I study where a client holds, where the surface yields, and how to close it — defense and reverse-engineering research, not an offensive catalog or abuse recipes.",
-        "href": "https://github.com/invertilo",
-        "linkLabel": "github.com/invertilo",
-        "image": "/fernet-logo.png",
-        "imageAlt": "Fernet logo: stylized F with Argentine flag",
-        "imageFit": "contain",
-        "background": "#0A0A0A",
         "foreground": "#F3EDE2"
       },
       {
