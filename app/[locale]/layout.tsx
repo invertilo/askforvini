@@ -3,7 +3,14 @@ import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { getMessages } from "@/lib/messages";
 import { THEME_BOOT_SCRIPT } from "@/lib/theme";
 import type { Metadata } from "next";
-import { Frank_Ruhl_Libre, Heebo, IBM_Plex_Mono, Source_Sans_3 } from "next/font/google";
+import {
+  Frank_Ruhl_Libre,
+  Heebo,
+  IBM_Plex_Mono,
+  Press_Start_2P,
+  Source_Sans_3,
+  VT323,
+} from "next/font/google";
 import Script from "next/script";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
@@ -33,6 +40,21 @@ const plex = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-plex",
+  display: "swap",
+});
+
+// Pixel faces for the 8-bit portfolio system: Press Start 2P for h1/h2, VT323 for nav.
+const pixelHeading = Press_Start_2P({
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
+  variable: "--font-pixel",
+  display: "swap",
+});
+
+const pixelTerminal = VT323({
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
+  variable: "--font-terminal",
   display: "swap",
 });
 
@@ -99,7 +121,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale as Locale}
-      className={`${frank.variable} ${source.variable} ${heebo.variable} ${plex.variable} h-full antialiased`}
+      className={`${frank.variable} ${source.variable} ${heebo.variable} ${plex.variable} ${pixelHeading.variable} ${pixelTerminal.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full bg-surface font-sans text-content">

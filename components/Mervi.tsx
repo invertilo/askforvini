@@ -5,9 +5,6 @@ import { cn } from "@/lib/utils";
 
 type Props = { className?: string; size?: number; interactive?: boolean };
 type Pose = "normal" | "pensativo" | "saludando" | "sorprendido" | "programador";
-const poses: Record<Pose, { frames: number; speed: number }> = {
-  normal: { frames: 1, speed: 620 }, pensativo: { frames: 1, speed: 620 }, saludando: { frames: 1, speed: 320 }, sorprendido: { frames: 1, speed: 220 }, programador: { frames: 1, speed: 550 },
-};
 
 /** Original Mervi sprite character. Uses the authored Mercav sprite strips and keeps their pixel art intact. */
 export function Mervi({ className, size = 96, interactive = true }: Props) {
@@ -32,7 +29,7 @@ export function Mervi({ className, size = 96, interactive = true }: Props) {
     reduce.addEventListener("change", sync); document.addEventListener("visibilitychange", sync); window.addEventListener("pointermove", move, { passive: true }); window.addEventListener("blur", leave); window.addEventListener("mervi:pet", pet); sync();
     return () => { cancelAnimationFrame(raf); observer.disconnect(); reduce.removeEventListener("change", sync); document.removeEventListener("visibilitychange", sync); window.removeEventListener("pointermove", move); window.removeEventListener("blur", leave); window.removeEventListener("mervi:pet", pet); };
   }, [interactive, max, sprite, stage]);
-  return <span ref={stageRef} className={cn("inline-block", className)} role="img" aria-label="Mervi, el gato de Mercav" style={{ position: "relative", width: stage, height: stage, overflow: "hidden", verticalAlign: "middle" }}><span ref={spriteRef} aria-hidden="true" style={{ position: "absolute", inset: 0, width: sprite, height: sprite, backgroundImage: "url(/mervi/normal.png)", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%", imageRendering: "pixelated", pointerEvents: "none", willChange: "transform" } as CSSProperties} /><span ref={heartRef} aria-hidden="true" style={{ position: "absolute", left: "58%", top: "12%", opacity: 0, color: "#d96a7a", fontSize: Math.max(18, stage * .16), lineHeight: 1, pointerEvents: "none" }}>♥</span></span>;
+  return <span ref={stageRef} className={cn("inline-block", className)} role="img" aria-label="Mervi, el gato de Mercav" style={{ position: "relative", width: stage, height: stage, overflow: "hidden", verticalAlign: "middle" }}><span ref={spriteRef} className="pixel-float" aria-hidden="true" style={{ position: "absolute", inset: 0, width: sprite, height: sprite, backgroundImage: "url(/mervi/normal.png)", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%", imageRendering: "pixelated", pointerEvents: "none", willChange: "transform" } as CSSProperties} /><span ref={heartRef} aria-hidden="true" style={{ position: "absolute", left: "58%", top: "12%", opacity: 0, color: "#d96a7a", fontSize: Math.max(18, stage * .16), lineHeight: 1, pointerEvents: "none" }}>♥</span></span>;
 }
 
 export default Mervi;

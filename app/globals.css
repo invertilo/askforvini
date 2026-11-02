@@ -640,6 +640,8 @@ button:focus-visible,
   background-size: 32px 32px;
 }
 
+/* Scanlines live on their own composited layer. No blend mode (it forced a full
+   repaint/blend on scroll); the flicker only animates opacity, which stays on the GPU. */
 .portfolio-8bit::before {
   content: "";
   position: fixed;
@@ -653,7 +655,10 @@ button:focus-visible,
     transparent 3px,
     rgb(0 0 0 / 0.15) 4px
   );
-  mix-blend-mode: multiply;
+  contain: strict;
+  transform: translateZ(0);
+  will-change: opacity;
+  animation: pixel-scanline-flicker 4.8s steps(1, end) infinite;
 }
 
 .site-header > .page-wrap {
@@ -680,11 +685,14 @@ button:focus-visible,
 }
 
 .site-header .nav-hit {
+  position: relative;
+  z-index: 1;
   border-radius: 0 !important;
-  font-family: var(--font-data);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-family: var(--font-terminal), var(--font-data);
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: none;
 }
@@ -695,6 +703,38 @@ button:focus-visible,
   background: var(--accent);
   color: var(--accent-fg);
   box-shadow: inset 0 -3px 0 rgb(8 17 31 / 0.4);
+}
+
+/* When the JS indicator is placed, it paints the active block and slides between
+   links in hard steps; the link itself goes transparent so the block shows through. */
+.site-header nav[data-indicator] .nav-hit[aria-current="true"] {
+  background: transparent;
+  box-shadow: none;
+}
+
+.site-header .nav-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: var(--nav-indicator-w, 0);
+  height: var(--nav-indicator-h, 0);
+  background: var(--accent);
+  box-shadow: inset 0 -3px 0 rgb(8 17 31 / 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(var(--nav-indicator-x, 0), var(--nav-indicator-y, 0));
+}
+
+.site-header .nav-indicator[data-visible] {
+  opacity: 1;
+}
+
+.site-header .nav-indicator[data-ready] {
+  transition:
+    transform 240ms steps(6, end),
+    width 240ms steps(6, end),
+    opacity 120ms steps(2, end);
 }
 
 .portfolio-8bit > section {
@@ -718,6 +758,40 @@ button:focus-visible,
   text-shadow:
     3px 3px 0 color-mix(in srgb, var(--accent) 55%, transparent),
     5px 5px 0 rgb(8 17 31 / 0.35);
+}
+
+/* Press Start 2P is wide (1ch = 1em), so sizes come down and line-height opens up. */
+.portfolio-8bit :is(h1, h2),
+.portfolio-8bit :is(h1, h2).font-display,
+.portfolio-8bit :is(h1, h2) .font-display,
+.portfolio-8bit :is(h1, h2) span {
+  font-family: var(--font-pixel), var(--font-data) !important;
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: 0 !important;
+}
+
+.portfolio-8bit :is(h1, h2) {
+  font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+  line-height: 1.45;
+  overflow-wrap: break-word;
+}
+
+.portfolio-8bit :is(h1, h2) span {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.portfolio-8bit #work h2 {
+  max-width: 18ch;
+  font-size: clamp(1.5rem, 4vw, 2.75rem);
+  line-height: 1.3;
+}
+
+.portfolio-8bit--faq h2 {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  text-shadow: none;
 }
 
 .portfolio-8bit #top .page-wrap > .grid,
@@ -761,16 +835,32 @@ button:focus-visible,
   letter-spacing: -0.075em;
 }
 
-.portfolio-8bit #top h1 {
+/* Doubled with #main:has(#top) so it outranks the editorial hero sizing above. */
+.portfolio-8bit #top h1,
+#main:has(#top).portfolio-8bit #top h1 {
   max-width: 22ch;
-  font-size: clamp(1.65rem, 3vw, 2.35rem);
-  line-height: 1.08;
+  font-size: clamp(1.2rem, 2.6vw, 1.75rem);
+  line-height: 1.4;
 }
 
-.portfolio-8bit #mercav h2 {
+/* Hero terminal cursor: a solid block after the name, blinking in hard steps. */
+.portfolio-8bit #top h1::after {
+  content: "";
+  display: inline-block;
+  width: 0.6em;
+  height: 0.9em;
+  margin-left: 0.25em;
+  vertical-align: -0.05em;
+  background: var(--pixel-gold);
+  box-shadow: 2px 2px 0 var(--pixel-ink);
+  animation: pixel-blink 1.06s steps(1, end) infinite;
+}
+
+.portfolio-8bit #mercav h2,
+#main:has(#top).portfolio-8bit #mercav h2 {
   max-width: 14ch;
-  font-size: clamp(2.1rem, 4vw, 3rem);
-  line-height: 1.05;
+  font-size: clamp(1.25rem, 3.4vw, 2.25rem);
+  line-height: 1.35;
 }
 
 .portfolio-8bit .photo-frame {
@@ -808,6 +898,16 @@ button:focus-visible,
   box-shadow: 1px 1px 0 var(--pixel-ink) !important;
 }
 
+/* Pressed: the button sinks fully into its shadow, like a hardware key. */
+.portfolio-8bit a.rounded-full:active,
+.portfolio-8bit #connect li a:active,
+.portfolio-8bit--faq a.rounded-full:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0 0 0 var(--pixel-ink) !important;
+  filter: brightness(0.92);
+  transition-duration: 40ms !important;
+}
+
 .portfolio-8bit #pillars article {
   min-width: 0;
   border: 2px solid color-mix(in srgb, var(--pixel-blue) 70%, var(--content));
@@ -830,6 +930,17 @@ button:focus-visible,
   box-shadow:
     8px 8px 0 var(--pixel-blue),
     12px 12px 0 var(--pixel-ink) !important;
+  transition:
+    translate 150ms steps(3, end),
+    box-shadow 150ms steps(3, end);
+}
+
+/* Lift uses the standalone `translate` property so it never fights the entry animation. */
+.portfolio-8bit .pixel-work-card:is(:hover, :focus-within) {
+  translate: -6px -6px;
+  box-shadow:
+    14px 14px 0 var(--pixel-blue),
+    18px 18px 0 var(--pixel-ink) !important;
 }
 
 .portfolio-8bit .pixel-work-media {
@@ -857,6 +968,20 @@ button:focus-visible,
   background: var(--pixel-ink);
   color: var(--pixel-gold);
   box-shadow: 3px 3px 0 rgb(0 0 0 / 0.45);
+  transition:
+    background-color 120ms steps(2, end),
+    color 120ms steps(2, end),
+    box-shadow 120ms steps(2, end);
+}
+
+.portfolio-8bit .pixel-work-card:is(:hover, :focus-within) .pixel-work-index {
+  background: var(--pixel-gold);
+  color: var(--pixel-ink);
+  box-shadow:
+    0 0 0 3px var(--pixel-ink),
+    0 0 0 6px color-mix(in srgb, var(--pixel-gold) 55%, transparent),
+    3px 3px 0 6px rgb(0 0 0 / 0.45);
+  animation: pixel-index-power 360ms steps(1, end) 1;
 }
 
 .portfolio-8bit .pixel-link {
@@ -978,7 +1103,11 @@ button:focus-visible,
   .site-header .nav-hit {
     flex: 0 0 auto;
     padding-inline: 0.55rem;
-    font-size: 0.68rem;
+    font-size: 1.05rem;
+  }
+
+  .portfolio-8bit #work h2 {
+    font-size: clamp(1.25rem, 6.4vw, 1.75rem);
   }
 
   .portfolio-8bit #top .page-wrap > .grid,
@@ -1004,11 +1133,163 @@ button:focus-visible,
   }
 }
 
+/* Stepped motion layer: scroll reveals, sprite float, focus, keyframes. */
+.pixel-float {
+  animation: pixel-float 1.4s steps(1, end) infinite;
+}
+
+.site-header,
+.portfolio-8bit {
+  --pixel-focus: #f0ba3c;
+  --pixel-focus-shadow: #08111f;
+}
+
+html[data-theme="light"] .site-header,
+html[data-theme="light"] .portfolio-8bit {
+  --pixel-focus: #765516;
+  --pixel-focus-shadow: #fffaf0;
+}
+
+.site-header :is(a, button, [tabindex]):focus-visible,
+.portfolio-8bit :is(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--pixel-focus);
+  outline-offset: 3px;
+  border-radius: 0;
+}
+
+/* The nav scrolls horizontally on mobile; keep its focus ring inside the clip box. */
+.site-header .nav-hit:focus-visible {
+  outline-offset: -4px;
+}
+
+@supports (animation-timeline: view()) {
+  .portfolio-8bit #mercav .page-wrap > .grid,
+  .portfolio-8bit #about > .grid,
+  .portfolio-8bit #pillars .page-wrap > .grid,
+  .portfolio-8bit #security > ol > li,
+  .portfolio-8bit #security > article,
+  .portfolio-8bit #connect > .page-wrap,
+  .portfolio-8bit #work .overflow-x-auto,
+  .portfolio-8bit--faq > section {
+    animation: pixel-reveal linear backwards;
+    animation-timing-function: steps(8, end);
+    animation-timeline: view();
+    animation-range: entry 5% entry 55%;
+  }
+
+  .portfolio-8bit .pixel-work-card {
+    animation: pixel-card-enter linear backwards;
+    animation-timing-function: steps(6, end);
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+  }
+}
+
+@keyframes pixel-reveal {
+  from {
+    clip-path: inset(-24px -24px calc(100% + 24px) -24px);
+  }
+  to {
+    clip-path: inset(-24px);
+  }
+}
+
+@keyframes pixel-card-enter {
+  from {
+    clip-path: inset(-24px -24px calc(100% + 24px) -24px);
+    transform: translateY(32px);
+  }
+  to {
+    clip-path: inset(-24px);
+    transform: translateY(0);
+  }
+}
+
+@keyframes pixel-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pixel-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -3px;
+  }
+}
+
+@keyframes pixel-scanline-flicker {
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  31% {
+    opacity: 0.09;
+  }
+  33% {
+    opacity: 0.14;
+  }
+  67% {
+    opacity: 0.1;
+  }
+  69% {
+    opacity: 0.12;
+  }
+}
+
+@keyframes pixel-index-power {
+  0% {
+    background: var(--pixel-ink);
+    color: var(--pixel-gold);
+  }
+  33% {
+    background: var(--pixel-gold);
+    color: var(--pixel-ink);
+  }
+  66% {
+    background: var(--pixel-ink);
+    color: var(--pixel-gold);
+  }
+  100% {
+    background: var(--pixel-gold);
+    color: var(--pixel-ink);
+  }
+}
+
+/* Reduced motion: every animation and transition of the 8-bit system is switched off.
+   State changes (hover offset, pressed, active nav block) still apply, instantly. */
 @media (prefers-reduced-motion: reduce) {
+  .portfolio-8bit::before,
+  .portfolio-8bit #top h1::after,
+  .portfolio-8bit #mercav .page-wrap > .grid,
+  .portfolio-8bit #about > .grid,
+  .portfolio-8bit #pillars .page-wrap > .grid,
+  .portfolio-8bit #security > ol > li,
+  .portfolio-8bit #security > article,
+  .portfolio-8bit #connect > .page-wrap,
+  .portfolio-8bit #work .overflow-x-auto,
+  .portfolio-8bit--faq > section,
+  .portfolio-8bit .pixel-work-card,
+  .portfolio-8bit .pixel-work-index,
   .portfolio-8bit a.rounded-full,
   .portfolio-8bit #connect li a,
-  .portfolio-8bit--faq a.rounded-full {
+  .portfolio-8bit--faq a.rounded-full,
+  .site-header .nav-indicator,
+  .pixel-float {
+    animation: none !important;
     transition: none !important;
+  }
+
+  .portfolio-8bit .pixel-work-card:is(:hover, :focus-within) {
+    translate: none;
   }
 }
 

@@ -1,6 +1,5 @@
 "use client";
 
-import { InPageAnchor } from "@/components/InPageAnchor";
 import { Mervi } from "@/components/Mervi";
 import { SectionSoftEdges } from "@/components/SectionSoftEdges";
 import { GrainGradient } from "@/components/ui/grain-gradient";
@@ -13,7 +12,7 @@ type MercavIntroProps = {
   copy: Messages["mercavIntro"];
 };
 
-export function MercavIntro({ locale, copy }: MercavIntroProps) {
+export function MercavIntro({ copy }: MercavIntroProps) {
   const reduce = useReducedMotion();
   const theme = useTheme();
 

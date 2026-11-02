@@ -182,6 +182,7 @@ function FlipCard({
         </div>
 
         <div className="relative m-[clamp(10px,1.2vw,18px)] min-h-[180px] overflow-hidden rounded-[clamp(12px,1.4vw,22px)] sm:ml-0">
+          {/* eslint-disable-next-line @next/next/no-img-element -- imagen de caso con recorte pixel */}
           <img
             src={item.image}
             alt={item.imageAlt}

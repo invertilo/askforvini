@@ -26,7 +26,6 @@ const VINI_FACTS = [
 export function Companion({ merviSelector = DEFAULT_MERVI_SELECTOR, className }: CompanionProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const artRef = useRef<SVGSVGElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
   const visibleImageRef = useRef<HTMLImageElement>(null);
   const bubbleRef = useRef<HTMLDivElement>(null);
   const figureRef = useRef<SVGGElement>(null);
@@ -179,8 +178,10 @@ export function Companion({ merviSelector = DEFAULT_MERVI_SELECTOR, className }:
       data-animation-version="continuous-v1"
       style={{ position: "fixed", top: 0, left: 0, width: 150, height: 190, zIndex: 40, pointerEvents: "none", willChange: "transform", transform: "translate3d(24px, 70vh, 0)", transformOrigin: "top left" }}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element -- sprite estático del Companion */}
       <img
         ref={visibleImageRef}
+        className="pixel-float"
         src="/companion/vini.png"
         alt=""
         draggable={false}
