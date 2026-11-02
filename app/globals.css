@@ -840,7 +840,12 @@ button:focus-visible,
 }
 
 .portfolio-8bit .pixel-work-media img {
-  filter: contrast(1.05) saturate(1.08);
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  padding: 0.5rem;
+  background: #0a111b;
+  filter: none;
 }
 
 .portfolio-8bit .pixel-work-index {
@@ -1005,6 +1010,43 @@ button:focus-visible,
   .portfolio-8bit--faq a.rounded-full {
     transition: none !important;
   }
+}
+
+/* Light mode keeps the same pixel language, but moves the panels and secondary copy
+   onto a clearer blue/cream contrast scale. */
+html[data-theme="light"] .portfolio-8bit {
+  --pixel-ink: #172337;
+  --pixel-panel: #e8f0f8;
+  --pixel-panel-soft: #d8e6f3;
+  --pixel-blue: #245b92;
+  --pixel-blue-light: #1f568d;
+  --pixel-gold: #765516;
+  --pixel-cream: #fffaf0;
+}
+
+html[data-theme="light"] .portfolio-8bit .text-content-secondary,
+html[data-theme="light"] .portfolio-8bit .text-content-secondary\/85 {
+  color: #26384d !important;
+}
+
+html[data-theme="light"] .portfolio-8bit :is(h1, h2) {
+  text-shadow:
+    3px 3px 0 #a9c8e4,
+    5px 5px 0 rgb(23 35 55 / 0.22);
+}
+
+html[data-theme="light"] .portfolio-8bit .pixel-work-card :is(p, h3),
+html[data-theme="light"] .portfolio-8bit .pixel-work-card .pixel-link {
+  text-shadow: none;
+}
+
+html[data-theme="light"] .portfolio-8bit #connect li a,
+html[data-theme="light"] .portfolio-8bit #work .overflow-x-auto {
+  color: #172337;
+}
+
+html[data-theme="light"] .portfolio-8bit #work .overflow-x-auto {
+  background: #e8f0f8;
 }
 
 :root {
