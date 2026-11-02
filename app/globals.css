@@ -476,6 +476,537 @@ button:focus-visible,
   }
 }
 
+/* Main-site visual refinement. The section color fades above remain untouched. */
+.site-header > .page-wrap {
+  justify-content: center;
+  padding-block: 0.8rem;
+}
+
+.site-header nav {
+  max-width: 100%;
+  flex-wrap: nowrap;
+  gap: 0.2rem;
+  padding: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--hairline) 78%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 74%, transparent);
+  box-shadow: 0 8px 28px rgb(0 0 0 / 0.08);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.site-header.is-stuck nav {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.site-header .nav-hit {
+  border-radius: 999px;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.site-header .nav-hit:hover,
+.site-header .nav-hit[aria-current="true"],
+.site-header .nav-hit[aria-current="page"] {
+  background: color-mix(in srgb, var(--content) 7%, transparent);
+}
+
+#main:has(#top) section h2,
+#main:has(#top) #top h1 {
+  text-wrap: balance;
+  letter-spacing: -0.035em;
+}
+
+#main:has(#top) #top .page-wrap > .grid > div:first-child > p.font-display {
+  font-size: clamp(3.25rem, 8.5vw, 6.75rem);
+  letter-spacing: -0.065em;
+}
+
+#main:has(#top) #top h1 {
+  max-width: 22ch;
+  font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+  line-height: 1.08;
+}
+
+#main:has(#top) #mercav h2 {
+  max-width: 14ch;
+  font-size: clamp(2.35rem, 4.3vw, 3.25rem);
+  line-height: 1.04;
+}
+
+#main:has(#top) .photo-frame {
+  border-radius: 1.75rem;
+  border-color: color-mix(in srgb, var(--content) 10%, transparent);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.04),
+    0 16px 44px rgb(0 0 0 / 0.1);
+}
+
+#main:has(#top) a.rounded-full {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+#main:has(#top) a.rounded-full:hover {
+  transform: translateY(-1px);
+}
+
+#main:has(#top) #connect li a {
+  border-color: color-mix(in srgb, var(--hairline) 92%, transparent);
+  border-radius: 1.1rem;
+  background: color-mix(in srgb, var(--surface-raised) 82%, transparent);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.045);
+  backdrop-filter: blur(12px);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+#main:has(#top) #connect li a:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--hairline));
+  background: color-mix(in srgb, var(--surface-raised) 94%, transparent);
+}
+
+#main:has(#top) #work .overflow-x-auto {
+  border-color: color-mix(in srgb, var(--hairline) 90%, transparent);
+  border-radius: 1.25rem;
+  background: color-mix(in srgb, var(--surface-raised) 76%, transparent);
+  box-shadow: 0 12px 34px rgb(0 0 0 / 0.055);
+}
+
+@media (max-width: 640px) {
+  .site-header > .page-wrap {
+    justify-content: flex-start;
+    padding-inline: max(0.75rem, env(safe-area-inset-left));
+  }
+
+  .site-header nav {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .site-header nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-header .nav-hit {
+    flex: 0 0 auto;
+    padding-inline: 0.65rem;
+    font-size: 0.875rem;
+  }
+
+  #main:has(#top) #top .page-wrap > .grid > div:first-child > p.font-display {
+    font-size: clamp(3rem, 15vw, 4.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header .nav-hit,
+  #main:has(#top) a.rounded-full,
+  #main:has(#top) #connect li a {
+    transition: none;
+  }
+
+  #main:has(#top) a.rounded-full:hover,
+  #main:has(#top) #connect li a:hover {
+    transform: none;
+  }
+}
+
+/* Portfolio 8-bit visual system. Scoped so the editorial newsroom stays intact. */
+.portfolio-8bit {
+  --pixel-ink: #08111f;
+  --pixel-panel: #101c2b;
+  --pixel-panel-soft: #17263a;
+  --pixel-blue: #397dc2;
+  --pixel-blue-light: #70a8df;
+  --pixel-gold: #f0ba3c;
+  --pixel-cream: #f5eddc;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(rgb(112 168 223 / 0.055) 2px, transparent 2px),
+    linear-gradient(90deg, rgb(112 168 223 / 0.055) 2px, transparent 2px);
+  background-size: 32px 32px;
+}
+
+.portfolio-8bit::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0.12;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgb(0 0 0 / 0.15) 4px
+  );
+  mix-blend-mode: multiply;
+}
+
+.site-header > .page-wrap {
+  justify-content: center;
+  padding-block: 0.75rem;
+}
+
+.site-header nav {
+  max-width: 100%;
+  flex-wrap: nowrap;
+  gap: 2px;
+  padding: 5px;
+  border: 2px solid var(--content);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
+  box-shadow:
+    4px 4px 0 var(--accent),
+    6px 6px 0 var(--pixel-ink, #08111f);
+  backdrop-filter: none;
+}
+
+.site-header.is-stuck nav {
+  background: var(--surface);
+}
+
+.site-header .nav-hit {
+  border-radius: 0 !important;
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: none;
+}
+
+.site-header .nav-hit:hover,
+.site-header .nav-hit[aria-current="true"],
+.site-header .nav-hit[aria-current="page"] {
+  background: var(--accent);
+  color: var(--accent-fg);
+  box-shadow: inset 0 -3px 0 rgb(8 17 31 / 0.4);
+}
+
+.portfolio-8bit > section {
+  border-bottom: 2px solid color-mix(in srgb, var(--pixel-blue) 46%, transparent);
+}
+
+.portfolio-8bit .section-atmos {
+  opacity: 0.18 !important;
+  filter: contrast(1.35) saturate(0.75);
+}
+
+.portfolio-8bit :is(h1, h2, h3),
+.portfolio-8bit .font-display {
+  font-family: var(--font-data) !important;
+  font-style: normal;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.portfolio-8bit :is(h1, h2) {
+  text-shadow:
+    3px 3px 0 color-mix(in srgb, var(--accent) 55%, transparent),
+    5px 5px 0 rgb(8 17 31 / 0.35);
+}
+
+.portfolio-8bit #top .page-wrap > .grid,
+.portfolio-8bit #mercav .page-wrap > .grid,
+.portfolio-8bit #about > .grid,
+.portfolio-8bit #pillars .page-wrap > .grid,
+.portfolio-8bit #connect > .page-wrap,
+.portfolio-8bit--faq > section {
+  position: relative;
+  border: 3px solid color-mix(in srgb, var(--content) 82%, var(--pixel-blue));
+  border-radius: 2px;
+  background:
+    linear-gradient(135deg, rgb(57 125 194 / 0.12), transparent 38%),
+    color-mix(in srgb, var(--surface) 92%, var(--pixel-panel));
+  box-shadow:
+    8px 8px 0 var(--accent),
+    12px 12px 0 var(--pixel-ink);
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.portfolio-8bit #top .page-wrap > .grid,
+.portfolio-8bit #mercav .page-wrap > .grid {
+  position: relative;
+}
+
+.portfolio-8bit #top .page-wrap > .grid::before,
+.portfolio-8bit #mercav .page-wrap > .grid::before,
+.portfolio-8bit #about > .grid::before,
+.portfolio-8bit #connect > .page-wrap::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--pixel-gold);
+  background: var(--pixel-ink);
+  transform: translate(-8px, -8px);
+}
+
+.portfolio-8bit #top .page-wrap > .grid > div:first-child > p.font-display {
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  letter-spacing: -0.075em;
+}
+
+.portfolio-8bit #top h1 {
+  max-width: 22ch;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  line-height: 1.08;
+}
+
+.portfolio-8bit #mercav h2 {
+  max-width: 14ch;
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.portfolio-8bit .photo-frame {
+  border: 3px solid var(--pixel-cream);
+  border-radius: 2px;
+  background: var(--pixel-ink);
+  box-shadow:
+    6px 6px 0 var(--pixel-blue),
+    9px 9px 0 var(--pixel-ink);
+}
+
+.portfolio-8bit .photo-frame :is(img, canvas),
+.portfolio-8bit .pixel-work-media img {
+  image-rendering: pixelated;
+}
+
+.portfolio-8bit a.rounded-full,
+.portfolio-8bit #connect li a,
+.portfolio-8bit--faq a.rounded-full {
+  border: 2px solid var(--pixel-ink) !important;
+  border-radius: 2px !important;
+  box-shadow: 4px 4px 0 var(--pixel-ink) !important;
+  font-family: var(--font-data);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  transition: transform 90ms steps(2, end), box-shadow 90ms steps(2, end) !important;
+}
+
+.portfolio-8bit a.rounded-full:hover,
+.portfolio-8bit #connect li a:hover,
+.portfolio-8bit--faq a.rounded-full:hover {
+  transform: translate(3px, 3px) !important;
+  box-shadow: 1px 1px 0 var(--pixel-ink) !important;
+}
+
+.portfolio-8bit #pillars article {
+  min-width: 0;
+  border: 2px solid color-mix(in srgb, var(--pixel-blue) 70%, var(--content));
+  background: color-mix(in srgb, var(--pixel-panel) 82%, transparent);
+  box-shadow: 5px 5px 0 var(--pixel-ink);
+  padding: clamp(1rem, 2.6vw, 2rem);
+}
+
+.portfolio-8bit #pillars li {
+  border: 2px solid var(--pixel-blue-light);
+  border-radius: 1px;
+  background: var(--pixel-ink);
+  box-shadow: 2px 2px 0 var(--pixel-blue);
+  color: var(--pixel-cream);
+}
+
+.portfolio-8bit .pixel-work-card {
+  border: 3px solid var(--pixel-blue-light);
+  border-radius: 2px !important;
+  box-shadow:
+    8px 8px 0 var(--pixel-blue),
+    12px 12px 0 var(--pixel-ink) !important;
+}
+
+.portfolio-8bit .pixel-work-media {
+  border: 3px solid var(--pixel-cream);
+  border-radius: 1px !important;
+  background: #0a111b;
+  box-shadow: inset 0 0 0 4px var(--pixel-ink);
+}
+
+.portfolio-8bit .pixel-work-media img {
+  filter: contrast(1.05) saturate(1.08);
+}
+
+.portfolio-8bit .pixel-work-index {
+  display: inline-grid;
+  width: 3.1rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 2px solid var(--pixel-gold);
+  background: var(--pixel-ink);
+  color: var(--pixel-gold);
+  box-shadow: 3px 3px 0 rgb(0 0 0 / 0.45);
+}
+
+.portfolio-8bit .pixel-link {
+  width: fit-content;
+  border-bottom: 3px solid var(--pixel-gold);
+  color: var(--pixel-cream);
+  text-decoration: none;
+}
+
+.portfolio-8bit .pixel-link::before {
+  content: "> ";
+  color: var(--pixel-gold);
+}
+
+.portfolio-8bit #work .overflow-x-auto {
+  border: 3px solid var(--pixel-blue-light);
+  border-radius: 2px;
+  background: var(--pixel-ink);
+  box-shadow:
+    6px 6px 0 var(--pixel-blue),
+    9px 9px 0 rgb(0 0 0 / 0.4);
+}
+
+.portfolio-8bit #security > .flex,
+.portfolio-8bit #security > p,
+.portfolio-8bit #security > ol,
+.portfolio-8bit #security > article {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-8bit #security > ol > li {
+  border: 2px solid color-mix(in srgb, var(--pixel-blue-light) 75%, var(--content));
+  background: color-mix(in srgb, var(--pixel-panel) 88%, transparent);
+  box-shadow: 5px 5px 0 var(--pixel-ink);
+  padding: 1.15rem;
+}
+
+.portfolio-8bit #security > ol > li > p:first-child {
+  color: var(--pixel-gold);
+}
+
+.portfolio-8bit #security > article {
+  border: 3px solid var(--pixel-blue-light);
+  background: color-mix(in srgb, var(--pixel-panel) 91%, var(--surface));
+  box-shadow:
+    7px 7px 0 var(--pixel-blue),
+    11px 11px 0 var(--pixel-ink);
+  padding: clamp(1.25rem, 3.5vw, 2.5rem);
+}
+
+.portfolio-8bit #security dl > div {
+  border-top: 2px dashed color-mix(in srgb, var(--pixel-blue-light) 65%, transparent);
+}
+
+.portfolio-8bit #security code {
+  display: inline-block;
+  border: 1px solid var(--pixel-blue-light);
+  background: var(--pixel-ink);
+  color: var(--pixel-gold);
+  padding: 0.08rem 0.35rem;
+}
+
+.portfolio-8bit #connect li a {
+  background: color-mix(in srgb, var(--pixel-panel) 92%, var(--surface));
+  color: var(--content);
+}
+
+.portfolio-8bit--faq {
+  min-height: calc(100dvh - 5rem);
+  padding: clamp(1rem, 4vw, 3rem) 0 4rem;
+}
+
+.portfolio-8bit--faq > section {
+  position: relative;
+}
+
+.portfolio-8bit--faq details {
+  border-bottom: 2px dashed color-mix(in srgb, var(--pixel-blue-light) 58%, transparent);
+  background: var(--pixel-panel);
+}
+
+.portfolio-8bit--faq details:last-child {
+  border-bottom: 0;
+}
+
+.portfolio-8bit--faq details[open] {
+  background: color-mix(in srgb, var(--pixel-blue) 22%, var(--pixel-panel));
+}
+
+.portfolio-8bit--faq details summary {
+  font-family: var(--font-data) !important;
+}
+
+.portfolio-8bit--faq .rounded-2xl {
+  border: 3px solid var(--pixel-blue-light);
+  border-radius: 2px !important;
+  box-shadow: 6px 6px 0 var(--pixel-ink);
+}
+
+@media (max-width: 640px) {
+  .site-header > .page-wrap {
+    justify-content: flex-start;
+    padding-inline: max(0.75rem, env(safe-area-inset-left));
+  }
+
+  .site-header nav {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .site-header nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-header .nav-hit {
+    flex: 0 0 auto;
+    padding-inline: 0.55rem;
+    font-size: 0.68rem;
+  }
+
+  .portfolio-8bit #top .page-wrap > .grid,
+  .portfolio-8bit #mercav .page-wrap > .grid,
+  .portfolio-8bit #about > .grid,
+  .portfolio-8bit #pillars .page-wrap > .grid,
+  .portfolio-8bit #connect > .page-wrap,
+  .portfolio-8bit--faq > section {
+    padding: 1rem;
+    box-shadow:
+      4px 4px 0 var(--accent),
+      7px 7px 0 var(--pixel-ink);
+  }
+
+  .portfolio-8bit #top .page-wrap > .grid > div:first-child > p.font-display {
+    font-size: clamp(2.35rem, 13vw, 4rem);
+  }
+
+  .portfolio-8bit .pixel-work-card {
+    box-shadow:
+      5px 5px 0 var(--pixel-blue),
+      8px 8px 0 var(--pixel-ink) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-8bit a.rounded-full,
+  .portfolio-8bit #connect li a,
+  .portfolio-8bit--faq a.rounded-full {
+    transition: none !important;
+  }
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

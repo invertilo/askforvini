@@ -78,7 +78,7 @@
         "body": "Diseño y desarrollo backend: contratos HTTP, reglas de negocio, autenticación y autorización, persistencia y límites claros entre capas. La lógica web no es un CRUD vacío: es el sistema que tiene que ser correcto bajo carga y bajo abuso.",
         "href": "https://github.com/invertilo",
         "linkLabel": "github.com/invertilo",
-        "image": "/secundaria.png",
+        "image": "/work-backend-8bit.png",
         "background": "#1C1A16",
         "foreground": "#F3EDE2"
       },
@@ -88,7 +88,7 @@
         "body": "Reviso APIs y endpoints como superficie de ataque y de defensa: authn/authz, objetos mal acotados, abuso de flujos, secretos, rate limits y cadenas de confianza. Documento el fallo y el cierre — no un playbook de explotación.",
         "href": "https://github.com/invertilo",
         "linkLabel": "github.com/invertilo",
-        "image": "/principal.png",
+        "image": "/work-api-8bit.png",
         "background": "#12110E",
         "foreground": "#F3EDE2"
       },
@@ -98,7 +98,7 @@
         "body": "Ambos lados del mismo problema. Ofensiva: superficie, lógica y binarios para ver dónde cede. Defensiva: controles, integridad y telemetría para que ese camino deje de ser usable. La defensa ciega no sirve.",
         "href": "https://github.com/invertilo",
         "linkLabel": "github.com/invertilo",
-        "image": "/secundaria.png",
+        "image": "/work-security-8bit.png",
         "background": "#1C1A16",
         "foreground": "#F3EDE2"
       },

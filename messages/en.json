@@ -78,7 +78,7 @@
         "body": "I design and ship backend: HTTP contracts, business rules, authentication and authorization, persistence, and clear layer boundaries. Web logic is not empty CRUD: it is the system that must be correct under load and under abuse.",
         "href": "https://github.com/invertilo",
         "linkLabel": "github.com/invertilo",
-        "image": "/secundaria.png",
+        "image": "/work-backend-8bit.png",
         "background": "#1C1A16",
         "foreground": "#F3EDE2"
       },
@@ -88,7 +88,7 @@
         "body": "I review APIs and endpoints as attack and defense surface: authn/authz, poorly scoped objects, flow abuse, secrets, rate limits, and trust chains. I document the failure and the fix — not an exploitation playbook.",
         "href": "https://github.com/invertilo",
         "linkLabel": "github.com/invertilo",
-        "image": "/principal.png",
+        "image": "/work-api-8bit.png",
         "background": "#12110E",
         "foreground": "#F3EDE2"
       },
@@ -98,7 +98,7 @@
         "body": "Both sides of the same problem. Offense: surface, logic, and binaries to see where a system yields. Defense: controls, integrity, and telemetry so that path stops being usable. Blind defense does not work.",
         "href": "https://github.com/invertilo",
         "linkLabel": "github.com/invertilo",
-        "image": "/secundaria.png",
+        "image": "/work-security-8bit.png",
         "background": "#1C1A16",
         "foreground": "#F3EDE2"
       },

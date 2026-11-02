@@ -32,7 +32,7 @@ export function FaqShell({ locale, messages }: FaqShellProps) {
       <ShabbatGate copy={messages.shabbat} />
       <InertWhenGated>
         <SiteHeader locale={locale} nav={messages.nav} />
-        <main id="main">
+        <main id="main" className="portfolio-8bit portfolio-8bit--faq">
           <Faq locale={locale} copy={messages.faq} />
         </main>
       </InertWhenGated>

@@ -42,7 +42,7 @@ export function SiteShell({ locale, messages }: SiteShellProps) {
         <MerviSplashScreen locale={locale} />
         <Companion />
         <SiteHeader locale={locale} nav={messages.nav} />
-        <main id="main">
+        <main id="main" className="portfolio-8bit">
           <MercavIntro locale={locale} copy={messages.mercavIntro} />
           <Hero locale={locale} copy={messages.hero} />
           <About copy={messages.about} />

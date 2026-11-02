@@ -77,12 +77,18 @@ export function Companion({ merviSelector = DEFAULT_MERVI_SELECTOR, className }:
 
       const viewportScale = window.innerWidth < 520 ? 0.72 : 1;
       root.style.transform = `translate3d(${frame.x.toFixed(1)}px, ${frame.y.toFixed(1)}px, 0) scale(${viewportScale})`;
-      root.style.transformOrigin = "bottom right";
+      root.style.transformOrigin = "top left";
       const landing = frame.mode === "pet" ? Math.abs(Math.sin(now * 0.011)) * 2 : 0;
       visibleImage.style.transform = `translateY(${(bob - step - landing).toFixed(1)}px) rotate(${(walk * 1.2).toFixed(1)}deg) scale(${frame.mode === "pet" ? 1.02 : 1}, ${frame.mode === "pet" ? 1.04 : 1})`;
       bubble.style.display = "block";
       bubble.textContent = frame.mode === "pet" ? "Vini acaricia al Mervi original de Mercav ♥" : VINI_FACTS[Math.floor(now / 12000) % VINI_FACTS.length];
-      if (frame.x > window.innerWidth * .55) { bubble.style.right = "54px"; bubble.style.left = "auto"; } else { bubble.style.left = "54px"; bubble.style.right = "auto"; }
+      const bubbleWidth = Math.min(230, window.innerWidth * 0.62);
+      const preferredLeft = frame.x > window.innerWidth * .55 ? 150 - 54 - bubbleWidth : 54;
+      const screenLeft = frame.x + preferredLeft * viewportScale;
+      const clampedScreenLeft = Math.max(8, Math.min(screenLeft, window.innerWidth - bubbleWidth * viewportScale - 8));
+      bubble.style.width = `${bubbleWidth}px`;
+      bubble.style.left = `${(clampedScreenLeft - frame.x) / viewportScale}px`;
+      bubble.style.right = "auto";
       art.style.transform = `scaleX(${frame.facing})`;
       figure.setAttribute("transform", `translate(0 ${bob.toFixed(2)})`);
       head.setAttribute("transform", `translate(0 ${(idle * 0.3 + (frame.mode === "pet" ? 1.5 : 0)).toFixed(2)})`);
@@ -171,7 +177,7 @@ export function Companion({ merviSelector = DEFAULT_MERVI_SELECTOR, className }:
       aria-hidden="true"
       data-state="idle"
       data-animation-version="continuous-v1"
-      style={{ position: "fixed", top: 0, left: 0, width: 150, height: 190, zIndex: 40, pointerEvents: "none", willChange: "transform", transform: "translate3d(24px, 70vh, 0)" }}
+      style={{ position: "fixed", top: 0, left: 0, width: 150, height: 190, zIndex: 40, pointerEvents: "none", willChange: "transform", transform: "translate3d(24px, 70vh, 0)", transformOrigin: "top left" }}
     >
       <img
         ref={visibleImageRef}
