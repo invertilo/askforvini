@@ -2,8 +2,10 @@
 
 import { About } from "@/components/About";
 import { Connect } from "@/components/Connect";
+import { Companion } from "@/components/Companion";
 import { Hero } from "@/components/Hero";
 import { MercavIntro } from "@/components/MercavIntro";
+import { MerviSplashScreen } from "@/components/MerviSplashScreen";
 import { Pillars } from "@/components/Pillars";
 import { ShabbatGate } from "@/components/ShabbatGate";
 import { ShabbatProvider, useShabbat } from "@/components/ShabbatProvider";
@@ -37,6 +39,8 @@ export function SiteShell({ locale, messages }: SiteShellProps) {
       <SkipLink label={messages.skip} />
       <ShabbatGate copy={messages.shabbat} />
       <InertWhenGated>
+        <MerviSplashScreen locale={locale} />
+        <Companion />
         <SiteHeader locale={locale} nav={messages.nav} />
         <main id="main">
           <MercavIntro locale={locale} copy={messages.mercavIntro} />
