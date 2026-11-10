@@ -4,7 +4,8 @@ import { InPageAnchor } from "@/components/InPageAnchor";
 import { KineticText } from "@/components/motion/KineticText";
 import type { Locale } from "@/lib/i18n";
 import type { Messages } from "@/lib/messages";
-import { FileSearch, Shield } from "lucide-react";
+import { Shield } from "lucide-react";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 type SecurityProps = {
@@ -51,7 +52,58 @@ export function Security({ locale, copy }: SecurityProps) {
         </div>
       </div>
 
-      <p className="mt-12 font-data text-[0.8125rem] tracking-[0.14em] text-content-secondary uppercase">
+      <article className="mt-10 max-w-[42rem] border-t border-hairline pt-8">
+        <p className="font-data text-[0.8125rem] tracking-[0.14em] text-content-secondary uppercase">
+          {report.eyebrow}
+        </p>
+        <h3 className="mt-2 font-display text-[1.35rem] font-medium leading-tight text-content">
+          {report.title}
+        </h3>
+        <p className="mt-3 text-content-secondary">{report.summary}</p>
+        <p className="mt-4 text-content-secondary">
+          <span className="font-data text-[0.8125rem] tracking-[0.12em] text-content uppercase">
+            {report.riskLabel}.{" "}
+          </span>
+          {report.risk}
+        </p>
+        <Link
+          href={`/${locale}/security`}
+          className="mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-accent px-6 font-medium text-accent-fg shadow-sm transition-all duration-200 hover:shadow-md hover:brightness-110"
+        >
+          {copy.reportLink}
+        </Link>
+      </article>
+
+      <p className="mt-10 max-w-[42rem] text-content-secondary">
+        {copy.cta}{" "}
+        <InPageAnchor
+          href={`/${locale}#connect`}
+          className="font-medium text-content underline-offset-4 hover:underline"
+        >
+          {copy.ctaConnect}
+        </InPageAnchor>
+      </p>
+    </section>
+  );
+}
+
+export function SecurityReport({ locale, copy }: SecurityProps) {
+  const { case: report } = copy;
+
+  return (
+    <article className="page-wrap pb-20 pt-28 md:pb-28 md:pt-32">
+      <Link
+        href={`/${locale}#security`}
+        className="font-data text-[0.8125rem] tracking-[0.12em] text-content-secondary uppercase hover:text-content"
+      >
+        {copy.reportBack}
+      </Link>
+      <h1 className="mt-6 max-w-[18ch] font-display text-[clamp(2.2rem,5vw,3.5rem)] font-medium leading-[1.05] tracking-tight">
+        {report.title}
+      </h1>
+      <p className="mt-5 max-w-[42rem] text-content-secondary">{report.summary}</p>
+
+      <p className="mt-14 font-data text-[0.8125rem] tracking-[0.14em] text-content-secondary uppercase">
         {copy.phasesLabel}
       </p>
       <ol className="mt-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -60,59 +112,38 @@ export function Security({ locale, copy }: SecurityProps) {
             <p className="font-data text-[0.8125rem] text-content-secondary">
               {String(index + 1).padStart(2, "0")}
             </p>
-            <h3 className="mt-2 font-display text-[1.15rem] font-medium leading-snug text-content">
+            <h2 className="mt-2 font-display text-[1.15rem] font-medium leading-snug text-content">
               {phase.title}
-            </h3>
+            </h2>
             <p className="mt-2 text-content-secondary">{phase.body}</p>
           </li>
         ))}
       </ol>
 
-      <article className="mt-16 border-t border-hairline pt-10">
-        <div className="flex items-start gap-3">
-          <FileSearch
-            aria-hidden="true"
-            className="mt-0.5 size-5 shrink-0 text-signal"
-            strokeWidth={1.75}
-          />
-          <div className="min-w-0">
-            <p className="font-data text-[0.8125rem] tracking-[0.14em] text-content-secondary uppercase">
-              {report.eyebrow}
-            </p>
-            <h3 className="mt-2 font-display text-[1.35rem] font-medium leading-tight text-content">
-              {report.title}
-            </h3>
-            <p className="mt-3 max-w-[42rem] text-content-secondary">
-              {report.summary}
-            </p>
-          </div>
-        </div>
-
-        <dl className="mt-8">
-          <CaseRow label={report.vectorLabel}>{report.vector}</CaseRow>
-          <CaseRow label={report.methodsLabel}>
-            <ul className="list-disc space-y-1 pl-5">
-              {report.methods.map((method) => (
-                <li key={method}>{method}</li>
-              ))}
-            </ul>
-          </CaseRow>
-          <CaseRow label={report.endpointsLabel}>
-            <ul className="space-y-1 font-data text-[0.875rem] text-content">
-              {report.endpoints.map((endpoint) => (
-                <li key={endpoint}>
-                  <code>{endpoint}</code>
-                </li>
-              ))}
-            </ul>
-          </CaseRow>
-          <CaseRow label={report.dataLabel}>{report.dataImpact}</CaseRow>
-          <CaseRow label={report.riskLabel}>
-            <span className="text-content">{report.risk}</span>
-          </CaseRow>
-          <CaseRow label={report.responseLabel}>{report.response}</CaseRow>
-        </dl>
-      </article>
+      <dl className="mt-12 max-w-[52rem]">
+        <CaseRow label={report.vectorLabel}>{report.vector}</CaseRow>
+        <CaseRow label={report.methodsLabel}>
+          <ul className="list-disc space-y-1 pl-5">
+            {report.methods.map((method) => (
+              <li key={method}>{method}</li>
+            ))}
+          </ul>
+        </CaseRow>
+        <CaseRow label={report.endpointsLabel}>
+          <ul className="space-y-1 font-data text-[0.875rem] text-content">
+            {report.endpoints.map((endpoint) => (
+              <li key={endpoint}>
+                <code>{endpoint}</code>
+              </li>
+            ))}
+          </ul>
+        </CaseRow>
+        <CaseRow label={report.dataLabel}>{report.dataImpact}</CaseRow>
+        <CaseRow label={report.riskLabel}>
+          <span className="text-content">{report.risk}</span>
+        </CaseRow>
+        <CaseRow label={report.responseLabel}>{report.response}</CaseRow>
+      </dl>
 
       <p className="mt-12 max-w-[42rem] text-content-secondary">
         {copy.cta}{" "}
@@ -123,6 +154,6 @@ export function Security({ locale, copy }: SecurityProps) {
           {copy.ctaConnect}
         </InPageAnchor>
       </p>
-    </section>
+    </article>
   );
 }

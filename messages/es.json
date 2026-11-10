@@ -7,11 +7,12 @@
   "nav": {
     "home": "Inicio",
     "about": "Acerca",
-    "pillars": "Pilares",
+    "pillars": "Yahadut",
     "work": "Trabajo",
     "security": "Seguridad",
     "connect": "Conectar",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "opinion": "Opinión"
   },
   "hero": {
     "brand": "askforvini",
@@ -168,7 +169,9 @@
       "response": "Revocación masiva de sesiones del rol afectado, rotación de secretos de firma, endurecimiento de authz por tenant en los tres endpoints, rate limit en export, alertas por enumeración de IDs y revisión de accesos históricos en la ventana del incidente."
     },
     "cta": "Si necesitás auditoría o respuesta post-incidente — hablamos.",
-    "ctaConnect": "Conectar"
+    "ctaConnect": "Conectar",
+    "reportLink": "Ver el informe",
+    "reportBack": "Volver"
   },
   "connect": {
     "title": "Conectar",

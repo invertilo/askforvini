@@ -30,6 +30,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${base}/es/security`,
+      lastModified,
+      alternates: {
+        languages: { es: `${base}/es/security`, en: `${base}/en/security` },
+      },
+    },
+    {
+      url: `${base}/en/security`,
+      lastModified,
+      alternates: {
+        languages: { es: `${base}/es/security`, en: `${base}/en/security` },
+      },
+    },
+    {
       url: "https://opinion.askforvini.pw/es/opinion",
       lastModified,
       alternates: { languages: { es: "https://opinion.askforvini.pw/es/opinion", en: "https://opinion.askforvini.pw/en/opinion" } },

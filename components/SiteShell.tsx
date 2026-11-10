@@ -4,7 +4,6 @@ import { About } from "@/components/About";
 import { Connect } from "@/components/Connect";
 import { Companion } from "@/components/Companion";
 import { Hero } from "@/components/Hero";
-import { MercavIntro } from "@/components/MercavIntro";
 import { MerviSplashScreen } from "@/components/MerviSplashScreen";
 import { Pillars } from "@/components/Pillars";
 import { ShabbatGate } from "@/components/ShabbatGate";
@@ -42,10 +41,14 @@ export function SiteShell({ locale, messages }: SiteShellProps) {
         <MerviSplashScreen locale={locale} />
         <Companion />
         <SiteHeader locale={locale} nav={messages.nav} />
-        <main id="main" className="portfolio-8bit">
-          <MercavIntro locale={locale} copy={messages.mercavIntro} />
+        <main id="main">
           <Hero locale={locale} copy={messages.hero} />
-          <About copy={messages.about} />
+          <About
+            copy={messages.about}
+            craftTitle={messages.pillars.craftTitle}
+            craftBody={messages.pillars.craftBody}
+            craftLine={messages.pillars.craftRepel}
+          />
           <Pillars copy={messages.pillars} />
           <Work copy={messages.work} />
           <Security locale={locale} copy={messages.security} />

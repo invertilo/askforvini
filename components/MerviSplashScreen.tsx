@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const SESSION_KEY = "askforvini:mervi-splash:v9";
-const INTRO_MS = 9800;
+const INTRO_MS = 1000;
 const FACTS = [
   "Terminamos el desarrollo completo de Selah.lat, una tienda judaica hecha a medida para ventas online desde Cochabamba.",
   "Actualmente desarrollo para el Colegio Boliviano Japonés: página web, plataforma estudiantil y soporte IT.",
@@ -39,7 +39,7 @@ export function MerviSplashScreen({ locale = "es" }: { locale?: string }) {
     try { alreadyShown ||= window.sessionStorage.getItem(SESSION_KEY) === "1"; } catch { /* ignore */ }
     if (alreadyShown) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    queueMicrotask(() => { if (cancelled) return; setReducedMotion(reduce); setVisible(true); timerRef.current = window.setTimeout(finish, reduce ? 1200 : INTRO_MS); });
+    queueMicrotask(() => { if (cancelled) return; setReducedMotion(reduce); setVisible(true); timerRef.current = window.setTimeout(finish, reduce ? 400 : INTRO_MS); });
     return () => { cancelled = true; if (timerRef.current !== null) window.clearTimeout(timerRef.current); };
   }, [finish]);
 

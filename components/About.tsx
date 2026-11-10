@@ -8,9 +8,12 @@ import type { Messages } from "@/lib/messages";
 
 type AboutProps = {
   copy: Messages["about"];
+  craftTitle: string;
+  craftBody: string;
+  craftLine: string;
 };
 
-export function About({ copy }: AboutProps) {
+export function About({ copy, craftTitle, craftBody, craftLine }: AboutProps) {
   const reduce = useReducedMotion();
 
   return (
@@ -21,6 +24,13 @@ export function About({ copy }: AboutProps) {
             {copy.title}
           </KineticText>
           <p className="mt-5 max-w-[42rem] text-content-secondary">{copy.body}</p>
+          <h3 className="mt-10 font-display text-[1.35rem] font-medium leading-tight text-content">
+            {craftTitle}
+          </h3>
+          <p className="mt-4 max-w-[42rem] text-content-secondary">{craftBody}</p>
+          <p className="mt-6 max-w-[28rem] font-display text-[1.35rem] font-medium leading-snug text-content">
+            {craftLine}
+          </p>
           <div className="mt-8 text-content" aria-label={copy.signature}>
             {reduce ? (
               <p className="font-display text-[1.5rem] italic tracking-tight">{copy.signature}</p>

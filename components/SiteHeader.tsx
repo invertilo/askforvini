@@ -26,6 +26,7 @@ export function SiteHeader({ locale, nav }: SiteHeaderProps) {
   const ready = useIsClient();
   const pathname = usePathname() ?? "";
   const onFaq = pathname === `/${locale}/faq` || pathname.endsWith("/faq");
+  const onSecurity = pathname === `/${locale}/security` || pathname.endsWith("/security");
   const [stuck, setStuck] = useState(false);
   const [active, setActive] = useState<string>("top");
   const navRef = useRef<HTMLElement>(null);
@@ -41,7 +42,7 @@ export function SiteHeader({ locale, nav }: SiteHeaderProps) {
   // Active section = last section whose top has crossed a reading line near the top of the viewport.
   // Computed from geometry on scroll (rAF-throttled), so programmatic scrolls and tall sections stay in sync.
   useEffect(() => {
-    if (onFaq) return;
+    if (onFaq || onSecurity) return;
 
     const nodes = SECTION_IDS.map((id) => document.getElementById(id)).filter(
       (el): el is HTMLElement => Boolean(el),
@@ -73,7 +74,7 @@ export function SiteHeader({ locale, nav }: SiteHeaderProps) {
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
     };
-  }, [onFaq]);
+  }, [onFaq, onSecurity]);
 
   // Pixel indicator: measures the current link and slides (stepped, via CSS) under it.
   useEffect(() => {
@@ -110,7 +111,7 @@ export function SiteHeader({ locale, nav }: SiteHeaderProps) {
       cancelAnimationFrame(frame);
       resize.disconnect();
     };
-  }, [ready, active, onFaq]);
+  }, [ready, active, onFaq, onSecurity]);
 
   const items = [
     { id: "top", href: `/${locale}#top`, label: nav.home },
@@ -138,7 +139,9 @@ export function SiteHeader({ locale, nav }: SiteHeaderProps) {
         >
           <span ref={indicatorRef} className="nav-indicator" aria-hidden="true" />
           {items.map((item) => {
-            const isCurrent = ready && !onFaq && active === item.id;
+            const isCurrent = onSecurity
+              ? item.id === "security"
+              : ready && !onFaq && active === item.id;
             return (
               <InPageAnchor
                 key={item.href}
@@ -157,6 +160,12 @@ export function SiteHeader({ locale, nav }: SiteHeaderProps) {
           >
             {nav.faq}
           </Link>
+          <a
+            href={`https://opinion.askforvini.pw/${locale}/opinion`}
+            className={linkClass(false)}
+          >
+            {nav.opinion}
+          </a>
         </nav>
       </div>
     </header>

@@ -128,7 +128,7 @@ export default async function MarchasArticle({ params }: { params: Promise<{ loc
         </div>
         <aside className="page-wrap opinion-article-note"><span>{isEnglish ? "EDITORIAL NOTE" : "NOTA EDITORIAL"}</span><p>{isEnglish ? "These screenshots were supplied for this opinion piece. Each panel contains an interpretation; where a screenshot alone does not confirm a detail, the accompanying context says so. The panels themselves are in Spanish." : "Las capturas se presentan como material aportado para esta opinión. Cada lámina contiene su propia interpretación; cuando una captura no confirma un detalle por sí sola, lo señalamos en el texto de contexto."}</p><Link href={`/${locale}/opinion`}>{isEnglish ? "Back to all publications" : "Volver a todas las publicaciones"} <ArrowUpRight size={16} /></Link></aside>
       </article>
-      <footer className="page-wrap opinion-article-footer"><span>© 2026 ASKFORVINI</span><Link href={`/${locale}`}>ASKFORVINI.PW ↗</Link></footer>
+      <footer className="page-wrap opinion-article-footer"><span>© 2026 ASKFORVINI</span><a href={`https://askforvini.pw/${locale}`}>ASKFORVINI.PW ↗</a></footer>
     </main>
   );
 }

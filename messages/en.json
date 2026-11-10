@@ -7,11 +7,12 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "pillars": "Pillars",
+    "pillars": "Yahadut",
     "work": "Work",
     "security": "Security",
     "connect": "Connect",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "opinion": "Opinion"
   },
   "hero": {
     "brand": "askforvini",
@@ -168,7 +169,9 @@
       "response": "Mass revocation of sessions for the affected role, rotation of signing secrets, tenant-scoped authz hardening on all three endpoints, export rate limits, alerts on ID enumeration, and review of access logs in the incident window."
     },
     "cta": "If you need an audit or post-incident response — we should talk.",
-    "ctaConnect": "Connect"
+    "ctaConnect": "Connect",
+    "reportLink": "Read the report",
+    "reportBack": "Back"
   },
   "connect": {
     "title": "Connect",
