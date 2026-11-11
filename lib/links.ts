@@ -13,8 +13,8 @@ export const CONNECT_LINKS = [
   },
   {
     id: "telegram",
-    href: "https://t.me/invertilo",
-    host: "t.me/invertilo",
+    href: "https://t.me/ledger8200",
+    host: "t.me/ledger8200",
   },
   {
     id: "email",
