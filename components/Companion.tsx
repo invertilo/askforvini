@@ -18,7 +18,6 @@ const VINI_FACTS = [
   "Mercav.lat es una startup que construyo junto a muy buenos amigos.",
   "Realizamos pentesting autorizado y Red Team con alcance definido.",
   "Próximo objetivo: la certificación APTS de Hack The Box.",
-  "En GitHub público también está Fernet, tooling de research en C++20.",
   "El futuro de Santa Cruz es grandioso.",
 ];
 

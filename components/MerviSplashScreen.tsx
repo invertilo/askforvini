@@ -12,7 +12,6 @@ const FACTS = [
   "Mercav.lat es una startup que construyo junto a muy buenos amigos.",
   "Hacemos pentesting autorizado y Red Team dentro de alcances definidos.",
   "Próximamente: certificación APTS de Hack The Box.",
-  "En GitHub público aparece Fernet: research tooling en C++20 para clientes Windows e integridad.",
   "El futuro de Santa Cruz es grandioso.",
 ];
 
